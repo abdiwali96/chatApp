@@ -8,16 +8,18 @@
 #include <QtWidgets/QMessageBox>
 
 #include "login.h"
-MainWindow::MainWindow(QString Username1,QString Username2,QString FT, QWidget *parent) :
+MainWindow::MainWindow(User* User1,User* User2,QString Topic, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     this->chatobject = new chat();
+    this->User1 = User1 ;
+    this->User2 = User2 ;
 
     //make a query in database to set the values , dont forget date
-    this->chatobject->setuser1(Username1);
-    this->chatobject->setuser2(Username2);
-    this->chatobject->setttopicname(FT);
+    this->chatobject->setuser1(this->GetObject()->getUsername());
+    this->chatobject->setuser2(this->GetObject2()->getUsername());
+    this->chatobject->setttopicname(Topic);
 
     QDateTime dateTime = dateTime.currentDateTime();
     QString dateTimeString = dateTime.toString("yyyy-MM-dd_hh-mm-ss");
@@ -86,7 +88,21 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+User* MainWindow::GetObject(){
+    return User1 ;
+}
 
+void MainWindow::SetObject(QString s) {
+      User1->setUsername(s);
+}
+
+User* MainWindow::GetObject2(){
+    return User2;
+}
+
+void MainWindow::SetObject2(QString s) {
+      User2->setUsername(s);
+}
 
 void MainWindow::on_buttonConnect_clicked()
 {
@@ -365,9 +381,16 @@ void MainWindow::on_returnhome_clicked()
     if(qry.exec()){
 
         QMessageBox::information(this, "Save", "Your Chat is Saved!");
+
     }else {
         QMessageBox::information(this, "NOT Saved", "Not saved chat");
     }
+
+
+    homepage *picbacktohomepage;
+    this->close();
+    picbacktohomepage = new homepage(this->GetObject()->getUsername(), this);
+    picbacktohomepage->show();
 
 
 

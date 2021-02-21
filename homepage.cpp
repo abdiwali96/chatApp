@@ -21,8 +21,7 @@ homepage::homepage(QString text,QWidget *parent) :
     LogginUser = text;
     ui->setupUi(this);
 
-    //this->userobject1 = new User();
-    //this->userobject2 = new User();
+
 
      ProfileSetup();
      friendsetup();
@@ -136,7 +135,7 @@ void homepage::ProfileSetup(){
 void homepage::on_EditProfilePic_clicked(){
 
     this->hide();
-    QString SendOverUsername = LogginUser;
+    //QString SendOverUsername = LogginUser;
 
     uploadpicwindow = new uploadpic(User1,this);
 
@@ -255,9 +254,9 @@ void homepage::on_SendMessage_clicked()
     //Qtring Username1 = LogginUser;
     QString Username1 = User1->getUsername();
     QString Username2 = User2->getUsername();
-    QString FT = Topic ;
+    //QString FT = Topic ;
 
-    mainwindowchat = new MainWindow(Username1,Username2,FT, this);
+    mainwindowchat = new MainWindow(User1,User2,this->Topic, this);
 
     mainwindowchat->show();
 

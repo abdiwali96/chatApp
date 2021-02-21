@@ -13,7 +13,7 @@ void chat::setNewchatlogid(int s) {
       Newchatlogid = s;
 }
 void chat::setuser1(QString s) {
-      user1 = s;
+    user1 = s;
 }
 void chat::setuser2(QString s){
       user2 = s;

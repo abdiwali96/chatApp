@@ -29,10 +29,6 @@ public:
     void ProfileSetup();
 
 
-    QString Topic;
-
-
-
     /*
     QString User1_ID;
     QString User1_Username;
@@ -40,6 +36,8 @@ public:
     QString User1_Mobile ;
     QString User1_friendslistnum;
     */
+
+    QString Topic;
 
     QString delimiter;
 

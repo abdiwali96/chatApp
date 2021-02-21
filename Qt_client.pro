@@ -28,6 +28,7 @@ SOURCES = \
 FORMS = \
    $$PWD/login.ui \
    editprofile.ui \
+   homepage.ui \
    mainwindow.ui \
    uploadpic.ui
 

@@ -70,7 +70,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QString Username1,QString Username2,QString FT,  QWidget *parent = nullptr);
+    explicit MainWindow(User* User1,User* User2,QString Topic,  QWidget *parent = nullptr);
     ~MainWindow();
 
     void GetEmojis();
@@ -79,8 +79,18 @@ public:
 
     void GetMessageHistory();
 
+    User* GetObject();
+
+    void SetObject(QString s);
+
+    User* GetObject2();
+
+    void SetObject2(QString s);
+
     QString uploadfilename;
     QByteArray byte0;
+
+
 
 public slots:
     void setClientPort(int p);
@@ -115,6 +125,10 @@ private:
     QMqttClient *m_client;
 
     chat *chatobject;
+
+    User *User1;
+
+    User *User2;
 
 
 };
