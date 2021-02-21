@@ -216,7 +216,7 @@ void MainWindow::on_Uploadfile_clicked()
 
 // CHANGE THE 121 number to LOGID
         qry.bindValue(":filesave", byte0 , QSql::In | QSql::Binary);
-        qry.bindValue(":chatLogID",100);
+        qry.bindValue(":chatLogID",this->chatobject->getOldchatlogid());
         qry.bindValue(":filename",uploadfilename);
         qry.bindValue(":Topicname",this->chatobject->gettopicname());
 
@@ -277,7 +277,7 @@ void MainWindow::GetListUpdate(){
     ui->Attachmentview->clear();
 
     QSqlQuery query1(QSqlDatabase::database("QMYSQL"));
-    query1.prepare(QString("SELECT * FROM attachedfiles WHERE Topicname = :Topicname ORDER BY chatLogID DESC LIMIT 1"));
+    query1.prepare(QString("SELECT * FROM attachedfiles WHERE Topicname = :Topicname"));
 
     //query1.bindValue(":chatLogID",this->chatobject->getOldchatlogid());
     query1.bindValue(":Topicname", this->chatobject->gettopicname());
