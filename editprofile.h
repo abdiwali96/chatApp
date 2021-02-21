@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
-
+#include "user.h"
 namespace Ui {
 class Editprofile;
 }
@@ -13,9 +13,15 @@ class Editprofile : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit Editprofile(QString text,QWidget *parent = nullptr);
+    explicit Editprofile(User* User1,QWidget *parent = nullptr);
     ~Editprofile();
     QString newusername;
+
+    //User *User1;
+
+    User* GetObject();
+
+    void SetObject(QString s) ;
 
 
 private slots:
@@ -25,10 +31,14 @@ private slots:
 
     void on_ReturnHome_clicked();
 
+
+
 private:
     Ui::Editprofile *ui;
 
-    QString LogginUser2editDets;
+    User *User1;
+
+   // QString LogginUser2editDets;
 
 };
 

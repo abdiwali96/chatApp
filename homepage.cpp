@@ -149,7 +149,7 @@ void homepage::on_EditProfilebutton_clicked()
     this->hide();
     QString SendOverUsername = LogginUser;
 
-    editprofilecwindow = new Editprofile(SendOverUsername,this);
+    editprofilecwindow = new Editprofile(User1,this);
 
     editprofilecwindow->show();
 

@@ -4,15 +4,19 @@
 #include "login.h"
 #include "databaseconnection.h"
 
-Editprofile::Editprofile(QString text,QWidget *parent) :
+Editprofile::Editprofile(User* User1,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Editprofile)
 {
     this->setFixedSize(600,500);
-    LogginUser2editDets = text;
-    ui->setupUi(this);
 
-    ui->Usernamelabel->setText(LogginUser2editDets);
+   // LogginUser2editDets = User1->getUsername();
+
+    this->User1 = User1 ;
+
+
+    ui->setupUi(this);
+    ui->Usernamelabel->setText(User1->getUsername());
 
 }
 
@@ -21,25 +25,32 @@ Editprofile::~Editprofile()
     delete ui;
 }
 
+User* Editprofile::GetObject(){
+    return User1 ;
+}
+
+void Editprofile::SetObject(QString s) {
+      User1->setUsername(s);
+}
+
 
 void Editprofile::on_pushButton_clicked()
 {
-     QString newpassword1 = ui->newpassword1->text();
-     QString newpassword2 = ui->newpassword2->text();
+   //  QString newpassword1 = ui->newpassword1->text();
+   //  QString newpassword2 = ui->newpassword2->text();
 
     QSqlQuery query1(QSqlDatabase::database("QMYSQL"));
     query1.prepare("UPDATE members SET password = :password WHERE username = :username");
-    query1.bindValue(":username",LogginUser2editDets);
-    query1.bindValue(":password",newpassword2);
+    query1.bindValue(":username",this->GetObject()->getEmail());
+    query1.bindValue(":password",ui->newpassword2->text());
 
-    if (newpassword1.isEmpty() || newpassword2.isEmpty()) {
+    if (ui->newpassword1->text().isEmpty() || ui->newpassword2->text().isEmpty()) {
 
          QMessageBox::information(this,"NOT VALID","YOU HAVE NOT ENTERED PASSWORD IN BOTH FIELDS");
     }else {
-         if (newpassword1 == newpassword2) {
+         if (ui->newpassword1->text() == ui->newpassword2->text()) {
              query1.exec();
-             QMessageBox::information(this,"VALID","YOUR PASSWORD HAS BEEN UPDATED");
-
+             QMessageBox::information(this,"VALID","YOUR PASSWORD HAS BEEN UPDATED");         
 
          }else{
              QMessageBox::information(this,"NOT VALID","BOTH PASSWORDS ARE NOT THE SAME");
@@ -49,35 +60,33 @@ void Editprofile::on_pushButton_clicked()
 }
 void Editprofile::on_UpdatebuttonUsername_clicked()
 {
-     QString newusername = ui->usernameLogin->text();
+    if (ui->usernameLogin->text().isEmpty()){
+         QMessageBox::information(this,"NOT VALID","USERNAME NOT ENTERED");
+    }else {
+        QSqlQuery query(QSqlDatabase::database("QMYSQL"));
 
-    QSqlQuery query(QSqlDatabase::database("QMYSQL"));
-    query.prepare("UPDATE members SET username = :username2 WHERE username = :username1");
-    query.bindValue(":username1",LogginUser2editDets);
-    query.bindValue(":username2",newusername);
+          query.prepare("UPDATE members SET username = :username2 WHERE username = :username1");
+          query.bindValue(":username1",this->GetObject()->getUsername());
+          query.bindValue(":username2",ui->usernameLogin->text());
 
-    query.exec();
-    QMessageBox::information(this,"VALID","YOUR USERNAME HAS BEEN UPDATED");
+          query.exec();
+          QMessageBox::information(this,"VALID","YOUR USERNAME HAS BEEN UPDATED");
+          this->SetObject(ui->usernameLogin->text());
 
-    this->newusername = newusername;
+    }
+
+
+
 }
 
 void Editprofile::on_ReturnHome_clicked()
 {
 
-    if (this->newusername.isEmpty()){
-        // this->hide();
-        homepage *picbacktohomepage;
-        this->close();
-        picbacktohomepage = new homepage(LogginUser2editDets, this);
-        picbacktohomepage->show();
-    }else {
-        // this->hide();
-        homepage *picbacktohomepage;
-        this->close();
-        picbacktohomepage = new homepage(this->newusername, this);
-        picbacktohomepage->show();
-
-    }
+    homepage *picbacktohomepage;
+    this->close();
+    picbacktohomepage = new homepage(this->GetObject()->getUsername(), this);
+    picbacktohomepage->show();
 
 }
+
+
