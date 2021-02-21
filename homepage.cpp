@@ -7,26 +7,29 @@
 #include <QStringList>
 #include <QVector>
 
-#include "databaseconnection.h"
+
 using namespace std;
 
 
 
 //i ve added to this first part parmaerter
-homepage::homepage(QString text,QWidget *parent) :
+homepage::homepage(User* User1,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::homepage)
 {
     this->setFixedSize(1100,800);
-    LogginUser = text;
+    this->User1 = User1 ;
+
+    LogginUser = "testing";
     ui->setupUi(this);
+    //label
+    ui->User1_Username->setText(this->User1->getUsername());
+    ui->User1_Email->setText(this->User1->getEmail());
+    ui->User1_Mobile->setText(this->User1->getMobile());
 
-
-
-     ProfileSetup();
-     friendsetup();
-
-
+    ui->ProfilePic->setPixmap(this->User1->getProfilepic().scaled (200,200,Qt::KeepAspectRatio));
+   // ProfileSetup();
+    friendsetup();
 
 }
 
@@ -82,6 +85,7 @@ void homepage::friendsetup(){
     }
      this->friendUsernames = friendUsernames ;
 
+
   // QString s = ui->listoffriends->currentItem()->text();
   // cout <<  << endl;
 
@@ -90,44 +94,7 @@ void homepage::friendsetup(){
 void homepage::ProfileSetup(){
 
 
-    QSqlQuery query(QSqlDatabase::database("QMYSQL"));
-    query.prepare(QString("SELECT * FROM members WHERE username = :username"));
-
-    query.bindValue(":username",LogginUser);
-    query.exec();
-
-        while(query.next()){
-            QString User1_ID = query.value(0).toString();
-            QString User1_Username = query.value(1).toString();
-            //QString User1_UfriendsIdListsername = query.value(1).toString();
-            QString User1_Email = query.value(3).toString();
-            QString User1_Mobile = query.value(4).toString();
-
-            //AVATAR
-            QByteArray PictureFromDatabase =query.value(5).toByteArray();
-            QPixmap User1_Profile = QPixmap();
-            User1_Profile.loadFromData(PictureFromDatabase);
-
-            //FriendsID
-            QString User1_friendslistnum = query.value(6).toString();
-
-            //Set User 1 Object
-           // this->userobject1->setId(User1_ID);
-            //this->userobject1->setUsername(User1_Username);
-            //this->userobject1->setEmail(User1_Email);
-            //this->userobject1->setMobile(User1_Mobile);
-          // this->userobject1->setProfilepic(User1_Profile);
-          //  this->userobject1->setFriendslist(User1_friendslistnum);
-            User1 = new User(User1_ID,User1_Username,User1_Email, User1_Mobile, User1_Profile, User1_friendslistnum);
-
-            //label
-            ui->User1_Username->setText(User1->getUsername());
-            ui->User1_Email->setText(User1->getEmail());
-            ui->User1_Mobile->setText(User1->getMobile());
-
-            ui->ProfilePic->setPixmap(User1->getProfilepic().scaled (200,200,Qt::KeepAspectRatio));
-         }
-
+//
 }
 
 
@@ -263,3 +230,9 @@ void homepage::on_SendMessage_clicked()
 }
 
 
+
+void homepage::on_listoffriends_itemClicked(QListWidgetItem *item)
+{
+    QString SelectedFilename = ui->listoffriends->currentItem()->text();
+    ui->SearchBox->setText(SelectedFilename);
+}

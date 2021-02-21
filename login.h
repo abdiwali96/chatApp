@@ -8,8 +8,9 @@
 #include <string>
 #include<iostream>
 
-
+#include "user.h"
 #include "homepage.h"
+#include "databaseconnection.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -35,6 +36,9 @@ private slots:
 
 private:
     Ui::Login *ui;
+
+    User *User1;
+
     //below new
     homepage *mainwindowchat;
 

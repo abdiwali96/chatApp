@@ -3,8 +3,7 @@
 
 
 #include <QMainWindow>
-#include "user.h"
-#include "databaseconnection.h"
+
 #include "uploadpic.h"
 #include "editprofile.h"
 #include "mainwindow.h"
@@ -19,7 +18,7 @@ class homepage : public QMainWindow
 
 public:
     //i added first part of parameter
-    explicit homepage(QString text,QWidget *parent = nullptr);
+    explicit homepage(User* User1,QWidget *parent = nullptr);
     ~homepage();
 
     void friendsetup();
@@ -60,6 +59,8 @@ private slots:
 
     void on_SendMessage_clicked();
 
+
+    void on_listoffriends_itemClicked(QListWidgetItem *item);
 
 private:
     Ui::homepage *ui;

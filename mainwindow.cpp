@@ -1,7 +1,6 @@
-
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "databaseconnection.h"
+
 
 #include <QtCore/QDateTime>
 #include <QtMqtt/QMqttClient>
@@ -389,7 +388,7 @@ void MainWindow::on_returnhome_clicked()
 
     homepage *picbacktohomepage;
     this->close();
-    picbacktohomepage = new homepage(this->GetObject()->getUsername(), this);
+    picbacktohomepage = new homepage(this->GetObject(), this);
     picbacktohomepage->show();
 
 

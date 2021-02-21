@@ -41,7 +41,7 @@ void Editprofile::on_pushButton_clicked()
 
     QSqlQuery query1(QSqlDatabase::database("QMYSQL"));
     query1.prepare("UPDATE members SET password = :password WHERE username = :username");
-    query1.bindValue(":username",this->GetObject()->getEmail());
+    query1.bindValue(":username",this->GetObject()->getUsername());
     query1.bindValue(":password",ui->newpassword2->text());
 
     if (ui->newpassword1->text().isEmpty() || ui->newpassword2->text().isEmpty()) {
@@ -84,7 +84,7 @@ void Editprofile::on_ReturnHome_clicked()
 
     homepage *picbacktohomepage;
     this->close();
-    picbacktohomepage = new homepage(this->GetObject()->getUsername(), this);
+    picbacktohomepage = new homepage(this->GetObject(), this);
     picbacktohomepage->show();
 
 }

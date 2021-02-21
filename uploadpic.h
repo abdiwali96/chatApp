@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include "user.h"
 
+
 namespace Ui {
 class uploadpic;
 }
@@ -21,7 +22,7 @@ public:
 
      User* GetObject();
 
-     void SetObject(QString s) ;
+     void setProfilepic(QPixmap s) ;
 
 
 

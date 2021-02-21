@@ -1,18 +1,8 @@
 #include "uploadpic.h"
 #include "ui_uploadpic.h"
-
 #include "homepage.h"
 #include "login.h"
-#include "databaseconnection.h"
 
-/*
-#include<QDebug>
-#include <string>
-#include <QPixmap>
-#include <QByteArray>
-#include <QSqlDatabase>
-#include <QSqlError>
-*/
 
 uploadpic::uploadpic(User* User1, QWidget *parent) :
     QMainWindow(parent),
@@ -38,8 +28,9 @@ User* uploadpic::GetObject(){
     return User1 ;
 }
 
-void uploadpic::SetObject(QString s) {
-      User1->setUsername(s);
+void uploadpic::setProfilepic(QPixmap s) {
+      User1->setProfilepic(s);
+
 }
 
 
@@ -48,7 +39,7 @@ void uploadpic::on_ReturnHomeBtn_clicked()
     // this->hide();
     homepage *picbacktohomepage;
     this->close();
-    picbacktohomepage = new homepage(this->GetObject()->getUsername(), this);
+    picbacktohomepage = new homepage(this->GetObject(), this);
     picbacktohomepage->show();
 
 
@@ -68,6 +59,7 @@ void uploadpic::on_ChooseImage_clicked()
                 image = image.scaledToWidth(ui->imageupload->width(), Qt:: SmoothTransformation);
                  QMessageBox::information(this,"Success","Image found");
                 ui->imageupload->setPixmap(QPixmap::fromImage(image));
+                this->setProfilepic(QPixmap::fromImage(image));
 
 
                 QFile file(filename);
@@ -95,6 +87,8 @@ void uploadpic::on_Update_clicked()
     if (this->byte.isEmpty()){
         QMessageBox::information(this,"try again","YOU HAVE NOT UPLOADED AN NEW IMAGE");
     }else {
+
+
         QMessageBox::information(this,"success","YOU HAVE UPLOADED AN NEW IMAGE");
         QSqlQuery query(QSqlDatabase::database("QMYSQL"));
         query.prepare("UPDATE members SET ProfilePic = :image WHERE username = :username");

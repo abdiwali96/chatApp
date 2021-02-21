@@ -1,11 +1,8 @@
 #include "login.h"
 #include "ui_login.h"
-#include "mainwindow.h"
-#include <string>
-#include<iostream>
 
-#include "databaseconnection.h"
-#include "homepage.h"
+
+
 
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
@@ -105,14 +102,27 @@ void Login::on_loginBtn_clicked()
         query.exec();
 
          if(query.next()){
+             QString User1_ID = query.value(0).toString();
+             QString User1_Username = query.value(1).toString();
+             QString User1_Email = query.value(3).toString();
+             QString User1_Mobile = query.value(4).toString();
+                         //AVATAR
+            QByteArray PictureFromDatabase =query.value(5).toByteArray();
+            QPixmap User1_Profile = QPixmap();
+            User1_Profile.loadFromData(PictureFromDatabase);
+
+                         //FriendsID
+             QString User1_friendslistnum = query.value(6).toString();
+
+             User1 = new User(User1_ID,User1_Username,User1_Email, User1_Mobile, User1_Profile, User1_friendslistnum);
 
                  QMessageBox::information(this,"Success","You are logged in");
 
                   this->hide();
-
+    //USER OBJECT CREATED HERE!!
                   QString SendOverUsername = ui->usernameLogin->text();
 
-                  mainwindowchat = new homepage(SendOverUsername, this);
+                  mainwindowchat = new homepage(User1, this);
                   mainwindowchat->show();
 
 

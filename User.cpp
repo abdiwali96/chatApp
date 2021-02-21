@@ -1,8 +1,6 @@
 #include "user.h"
-#include <iostream>
-using namespace std;
 
-#include <string>
+
 
 User::User(QString idnum, QString usernamenum, QString emailnum , QString mobilenum , QPixmap profilepicnum, QString friendslistnum){
 
