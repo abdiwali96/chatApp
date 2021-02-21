@@ -224,9 +224,9 @@ void MainWindow::on_Uploadfile_clicked()
 
         if(qry.exec()){
 
-            if (m_client->publish(this->chatobject->gettopicname(), "NOTE: A FILE HAS BEEN UPLOADED 📦📦📦📦📦📦📦📦📦📦➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️") == -1)
+            if (m_client->publish(this->chatobject->gettopicname(), "NOTE:FILE HAS BEEN UPLOADED, PLEASE REFRESH 📦➡️") == -1)
 
-            ui->editLog->insertPlainText("NOTE: A FILE HAS BEEN UPLOADED 📦📦📦📦📦📦📦📦📦📦➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️" );
+            ui->editLog->insertPlainText("NOTE:FILE HAS BEEN UPLOADED, PLEASE REFRESH 📦➡️" );
 
             QMessageBox::information(this, "Inserted", "Data is Inserted Succesfully");
         }else {
