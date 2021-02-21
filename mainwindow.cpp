@@ -29,7 +29,7 @@ MainWindow::MainWindow(QString Username1,QString Username2,QString FT, QWidget *
 
    // QString str = this->chatobject->getmessage().join(",");
 
-    this->setFixedSize(1165,885);
+    this->setFixedSize(1116,885);
     ui->setupUi(this);
     QStringList MessageLogging ;
 
@@ -134,6 +134,7 @@ void MainWindow::on_buttonPublish_clicked()
 {
     if (m_client->publish(this->chatobject->gettopicname(), ui->lineEditMessage->text().toUtf8()) == -1)
         QMessageBox::critical(this, QLatin1String("Error"), QLatin1String("Could not publish message"));
+
 }
 
 void MainWindow::on_buttonSubscribe_clicked()
@@ -222,7 +223,10 @@ void MainWindow::on_Uploadfile_clicked()
 
 
         if(qry.exec()){
-             ui->editLog->insertPlainText("NOTE: ");
+
+            if (m_client->publish(this->chatobject->gettopicname(), "NOTE: A FILE HAS BEEN UPLOADED 📦📦📦📦📦📦📦📦📦📦➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️") == -1)
+
+            ui->editLog->insertPlainText("NOTE: A FILE HAS BEEN UPLOADED 📦📦📦📦📦📦📦📦📦📦➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️➡️" );
 
             QMessageBox::information(this, "Inserted", "Data is Inserted Succesfully");
         }else {
@@ -245,7 +249,6 @@ void MainWindow::GetMessageHistory(){
     queryH.bindValue(":Topicname",this->chatobject->gettopicname());
     //condition below is if condition fails to execute
     queryH.exec();
-
      while(queryH.next()){
 
         // int dbmessage1 = queryH.value(0).toInt();
@@ -265,10 +268,7 @@ void MainWindow::GetMessageHistory(){
 
           }
 
-
      }
-
-
 
 }
 
