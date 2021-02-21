@@ -15,7 +15,7 @@ class Editprofile : public QMainWindow
 public:
     explicit Editprofile(User* User1,QWidget *parent = nullptr);
     ~Editprofile();
-    QString newusername;
+    //QString newusername;
 
     //User *User1;
 

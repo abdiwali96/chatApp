@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
-
+#include "user.h"
 
 namespace Ui {
 class uploadpic;
@@ -14,10 +14,15 @@ class uploadpic : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit uploadpic(QString text,QWidget *parent = nullptr);
+    explicit uploadpic(User* User1,QWidget *parent = nullptr);
     ~uploadpic();
-
      QByteArray byte;
+
+
+     User* GetObject();
+
+     void SetObject(QString s) ;
+
 
 
 private slots:
@@ -31,6 +36,8 @@ private slots:
 
 private:
     Ui::uploadpic *ui;
+
+    User *User1;
 
     QString LogginUser2profilepic;
 

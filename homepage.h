@@ -32,8 +32,7 @@ public:
     QString Topic;
 
 
-    User *User1;
-    User *User2;
+
     /*
     QString User1_ID;
     QString User1_Username;
@@ -49,6 +48,7 @@ public:
     QStringList friendUsernames;
     QVector<int> friendsIdList;
     QString friendusername;
+
 
 private slots:
 
@@ -66,15 +66,15 @@ private slots:
 private:
     Ui::homepage *ui;
 
-    //User *userobject1;
-    //User *userobject2;
+    User *User1;
+    User *User2;
 
     //I added below
      QString LogginUser;
      //
-      Editprofile *editprofilecwindow;
-      uploadpic *uploadpicwindow;
-      MainWindow *mainwindowchat;
+     Editprofile *editprofilecwindow;
+     uploadpic *uploadpicwindow;
+     MainWindow *mainwindowchat;
 
 };
 

@@ -138,7 +138,7 @@ void homepage::on_EditProfilePic_clicked(){
     this->hide();
     QString SendOverUsername = LogginUser;
 
-    uploadpicwindow = new uploadpic(SendOverUsername,this);
+    uploadpicwindow = new uploadpic(User1,this);
 
     uploadpicwindow->show();
 
@@ -147,7 +147,7 @@ void homepage::on_EditProfilePic_clicked(){
 void homepage::on_EditProfilebutton_clicked()
 {
     this->hide();
-    QString SendOverUsername = LogginUser;
+    //QString SendOverUsername = LogginUser;
 
     editprofilecwindow = new Editprofile(User1,this);
 

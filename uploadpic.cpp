@@ -14,15 +14,18 @@
 #include <QSqlError>
 */
 
-uploadpic::uploadpic(QString text, QWidget *parent) :
+uploadpic::uploadpic(User* User1, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::uploadpic)
 {
     this->setFixedSize(800,600);
-    LogginUser2profilepic = text;
+    this->User1 = User1 ;
+
+    LogginUser2profilepic = User1->getUsername();
+
     ui->setupUi(this);
 
-    ui->label->setText(LogginUser2profilepic);
+    ui->label->setText(User1->getUsername());
 
 }
 
@@ -31,12 +34,21 @@ uploadpic::~uploadpic()
     delete ui;
 }
 
+User* uploadpic::GetObject(){
+    return User1 ;
+}
+
+void uploadpic::SetObject(QString s) {
+      User1->setUsername(s);
+}
+
+
 void uploadpic::on_ReturnHomeBtn_clicked()
 {
     // this->hide();
     homepage *picbacktohomepage;
     this->close();
-    picbacktohomepage = new homepage(LogginUser2profilepic, this);
+    picbacktohomepage = new homepage(this->GetObject()->getUsername(), this);
     picbacktohomepage->show();
 
 
@@ -67,7 +79,6 @@ void uploadpic::on_ChooseImage_clicked()
 
                     }
 
-
             }
             else {
                 //ERROR handling Stuff
@@ -87,7 +98,7 @@ void uploadpic::on_Update_clicked()
         QMessageBox::information(this,"success","YOU HAVE UPLOADED AN NEW IMAGE");
         QSqlQuery query(QSqlDatabase::database("QMYSQL"));
         query.prepare("UPDATE members SET ProfilePic = :image WHERE username = :username");
-        query.bindValue(":username",LogginUser2profilepic);
+        query.bindValue(":username",this->GetObject()->getUsername());
         query.bindValue(":image", this->byte , QSql::In | QSql::Binary);
 
         query.exec();
