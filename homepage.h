@@ -50,12 +50,7 @@ public:
     QVector<int> friendsIdList;
     QString friendusername;
 
-
-
-
 private slots:
-
-
 
     void on_EditProfilePic_clicked();
 
@@ -68,13 +63,14 @@ private slots:
     void on_SendMessage_clicked();
 
 
-
 private:
     Ui::homepage *ui;
 
+    //User *userobject1;
+    //User *userobject2;
+
     //I added below
      QString LogginUser;
-
      //
       Editprofile *editprofilecwindow;
       uploadpic *uploadpicwindow;

@@ -13,7 +13,7 @@ using namespace std;
 
 class User {       // The class
   public:
-
+    //User();
     User(QString idnum, QString usernamenum, QString email, QString mobilenum, QPixmap profilepicnum, QString friendslistnum);
 /*
     int id;

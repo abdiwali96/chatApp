@@ -88,7 +88,9 @@ public slots:
 private slots:
 
     void on_buttonConnect_clicked();
+
     void on_buttonQuit_clicked();
+
     void updateLogStateChange();
 
     void brokerDisconnected();
@@ -100,7 +102,6 @@ private slots:
     void on_Uploadfile_clicked();
 
     void on_OpenAttachment_clicked();
-
 
     void on_Emojiwidget_itemClicked(QListWidgetItem *item);
 

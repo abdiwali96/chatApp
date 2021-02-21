@@ -21,8 +21,8 @@ homepage::homepage(QString text,QWidget *parent) :
     LogginUser = text;
     ui->setupUi(this);
 
-
-    //queries db to find ALL user data
+    //this->userobject1 = new User();
+    //this->userobject2 = new User();
 
      ProfileSetup();
      friendsetup();
@@ -98,7 +98,7 @@ void homepage::ProfileSetup(){
     query.exec();
 
         while(query.next()){
-            QString User1_ID = query.value(0).toString();;
+            QString User1_ID = query.value(0).toString();
             QString User1_Username = query.value(1).toString();
             //QString User1_UfriendsIdListsername = query.value(1).toString();
             QString User1_Email = query.value(3).toString();
@@ -113,6 +113,12 @@ void homepage::ProfileSetup(){
             QString User1_friendslistnum = query.value(6).toString();
 
             //Set User 1 Object
+           // this->userobject1->setId(User1_ID);
+            //this->userobject1->setUsername(User1_Username);
+            //this->userobject1->setEmail(User1_Email);
+            //this->userobject1->setMobile(User1_Mobile);
+          // this->userobject1->setProfilepic(User1_Profile);
+          //  this->userobject1->setFriendslist(User1_friendslistnum);
             User1 = new User(User1_ID,User1_Username,User1_Email, User1_Mobile, User1_Profile, User1_friendslistnum);
 
             //label
@@ -161,9 +167,7 @@ void homepage::on_Searchbutton_clicked()
 
     if(query1.next()){
 
-
-
-        QString User2_ID = query1.value(0).toString();;
+        QString User2_ID = query1.value(0).toString();
         QString User2_Username = query1.value(1).toString();
         //QString User1_UfriendsIdListsername = query.value(1).toString();
         QString User2_Email = query1.value(3).toString();
@@ -177,6 +181,12 @@ void homepage::on_Searchbutton_clicked()
         //FriendsID
         QString User2_friendslistnum = query1.value(6).toString();
 
+        //this->userobject2->setId(User2_ID);
+       // this->userobject2->setUsername(User2_Username);
+        //this->userobject2->setEmail(User2_Email);
+        //this->userobject2->setMobile(User2_Mobile);
+        //this->userobject2->setProfilepic(User1_Profile2);
+        //this->userobject2->setFriendslist(User2_friendslistnum);
 
         User2 = new User(User2_ID,User2_Username,User2_Email, User2_Mobile, User1_Profile2, User2_friendslistnum);
 
@@ -224,7 +234,7 @@ void homepage::createTopic()
     QString Topic;
 
     int FristTopic = User1->getId().toInt() ;
-    int SecondTopic = User2->getId().toInt() ;
+    int SecondTopic = User2->getId().toInt();
 
     if (FristTopic > SecondTopic){
 
