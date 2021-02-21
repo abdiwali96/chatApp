@@ -49,14 +49,20 @@
 ****************************************************************************/
 
 
+#include "login.h"
 #include "mainwindow.h"
 #include <QApplication>
+#include "databaseconnection.h"
+
+#include "user.h"
+
+
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
 
+    QApplication a(argc, argv);
+    Login w;
+    w.show();
     return a.exec();
 }

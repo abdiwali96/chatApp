@@ -54,7 +54,13 @@
 
 #include <QMainWindow>
 #include <QMqttClient>
-
+#include "user.h"
+#include <QMainWindow>
+#include <QFileDialog>
+#include <QListWidgetItem>
+#include <QPdfWriter>
+#include <QDate>
+#include "chat.h"
 namespace Ui {
 class MainWindow;
 }
@@ -64,13 +70,23 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QString Username1,QString Username2,QString FT,  QWidget *parent = nullptr);
     ~MainWindow();
+
+    void GetEmojis();
+
+    void GetListUpdate();
+
+    void GetMessageHistory();
+
+    QString uploadfilename;
+    QByteArray byte0;
 
 public slots:
     void setClientPort(int p);
 
 private slots:
+
     void on_buttonConnect_clicked();
     void on_buttonQuit_clicked();
     void updateLogStateChange();
@@ -81,9 +97,25 @@ private slots:
 
     void on_buttonSubscribe_clicked();
 
+    void on_Uploadfile_clicked();
+
+    void on_OpenAttachment_clicked();
+
+
+    void on_Emojiwidget_itemClicked(QListWidgetItem *item);
+
+    void on_returnhome_clicked();
+
+    void on_refreshattachments_clicked();
+
 private:
     Ui::MainWindow *ui;
+
     QMqttClient *m_client;
+
+    chat *chatobject;
+
+
 };
 
 #endif // MAINWINDOW_H
