@@ -19,94 +19,10 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="Memberbox">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>310</y>
-      <width>281</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#Memberbox{
-
-background-color: rgb(243, 243, 243);
-   border-radius: 10px;
-}
-</string>
-    </property>
-    <property name="title">
-     <string>Member: Logged in</string>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_4">
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Username:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="User1_Username">
-         <property name="text">
-          <string>Username</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Email:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="User1_Email">
-         <property name="text">
-          <string>Email</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Mobile:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="User1_Mobile">
-         <property name="text">
-          <string>Username:</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="QPushButton" name="EditProfilebutton">
-       <property name="text">
-        <string>Edit Profile</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>340</x>
       <y>100</y>
       <width>20</width>
       <height>661</height>
@@ -120,9 +36,9 @@ background-color: rgb(243, 243, 243);
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>500</y>
+      <y>410</y>
       <width>281</width>
-      <height>261</height>
+      <height>341</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -144,9 +60,9 @@ background-color: rgb(243, 243, 243);
    <widget class="Line" name="line_2">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>270</y>
-      <width>611</width>
+      <x>400</x>
+      <y>350</y>
+      <width>641</width>
       <height>20</height>
      </rect>
     </property>
@@ -209,9 +125,9 @@ background-color: rgb(243, 243, 243);
    <widget class="Line" name="line_3">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>430</y>
-      <width>621</width>
+      <x>400</x>
+      <y>490</y>
+      <width>641</width>
       <height>16</height>
      </rect>
     </property>
@@ -222,10 +138,10 @@ background-color: rgb(243, 243, 243);
    <widget class="QGroupBox" name="Profilepicbox">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>120</y>
-      <width>211</width>
-      <height>181</height>
+      <x>30</x>
+      <y>110</y>
+      <width>281</width>
+      <height>281</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -271,15 +187,16 @@ width: 20px;
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>310</y>
-      <width>621</width>
+      <x>400</x>
+      <y>370</y>
+      <width>641</width>
       <height>121</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">#groupBox {
 	background-color: rgb(255, 255, 255);
+ border-radius: 10px;
 }</string>
     </property>
     <property name="title">
@@ -411,25 +328,26 @@ width: 20px;
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>470</y>
-      <width>611</width>
-      <height>141</height>
+      <x>400</x>
+      <y>510</y>
+      <width>641</width>
+      <height>241</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">#groupBox_2 {
 	background-color: rgb(255, 255, 255);
+ border-radius: 10px;
 }</string>
     </property>
     <property name="title">
-     <string>Addtional Options</string>
+     <string>Stats</string>
     </property>
     <widget class="QPushButton" name="ViewAllHistory">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>50</y>
+       <x>480</x>
+       <y>30</y>
        <width>141</width>
        <height>25</height>
       </rect>
@@ -441,8 +359,8 @@ width: 20px;
     <widget class="QPushButton" name="StatisticalReport">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>100</y>
+       <x>480</x>
+       <y>70</y>
        <width>141</width>
        <height>25</height>
       </rect>
@@ -455,11 +373,17 @@ width: 20px;
    <widget class="QGroupBox" name="groupBox_3">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>140</y>
-      <width>621</width>
+      <x>400</x>
+      <y>240</y>
+      <width>641</width>
       <height>101</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#groupBox_3 {
+	background-color: rgb(255, 255, 255);
+ border-radius: 10px;
+}</string>
     </property>
     <property name="title">
      <string>Search Member</string>
@@ -490,6 +414,111 @@ width: 20px;
       <font>
        <pointsize>14</pointsize>
       </font>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="Memberbox">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>110</y>
+      <width>641</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#Memberbox{
+
+	background-color: rgb(114, 159, 207);
+   border-radius: 10px;
+}
+</string>
+    </property>
+    <property name="title">
+     <string>Member: Logged in</string>
+    </property>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>30</y>
+       <width>81</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Username:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Email:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Mobile:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>30</y>
+       <width>201</width>
+       <height>74</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="User1_Username">
+        <property name="text">
+         <string>Username</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="User1_Email">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Email</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="User1_Mobile">
+        <property name="text">
+         <string>Mobile</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QPushButton" name="EditProfilebutton">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>50</y>
+       <width>131</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Edit Profile</string>
      </property>
     </widget>
    </widget>

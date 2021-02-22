@@ -27,7 +27,7 @@ homepage::homepage(User* User1,QWidget *parent) :
     ui->User1_Email->setText(this->User1->getEmail());
     ui->User1_Mobile->setText(this->User1->getMobile());
 
-    ui->ProfilePic->setPixmap(this->User1->getProfilepic().scaled (200,200,Qt::KeepAspectRatio));
+    ui->ProfilePic->setPixmap(this->User1->getProfilepic().scaled (265,235,Qt::KeepAspectRatio));
    // ProfileSetup();
     friendsetup();
 
@@ -231,7 +231,7 @@ void homepage::on_SendMessage_clicked()
 
 
 
-void homepage::on_listoffriends_itemClicked(QListWidgetItem *item)
+void homepage::on_listoffriends_itemClicked()
 {
     QString SelectedFilename = ui->listoffriends->currentItem()->text();
     ui->SearchBox->setText(SelectedFilename);

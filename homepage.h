@@ -60,7 +60,7 @@ private slots:
     void on_SendMessage_clicked();
 
 
-    void on_listoffriends_itemClicked(QListWidgetItem *item);
+    void on_listoffriends_itemClicked();
 
 private:
     Ui::homepage *ui;
