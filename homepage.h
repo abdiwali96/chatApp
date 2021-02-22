@@ -7,6 +7,7 @@
 #include "uploadpic.h"
 #include "editprofile.h"
 #include "mainwindow.h"
+#include "historyappwindow.h"
 
 namespace Ui {
 class homepage;
@@ -62,6 +63,10 @@ private slots:
 
     void on_listoffriends_itemClicked();
 
+    void on_ViewHistory_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::homepage *ui;
 
@@ -71,9 +76,11 @@ private:
     //I added below
      QString LogginUser;
      //
+     historyappwindow *historyapp;
      Editprofile *editprofilecwindow;
      uploadpic *uploadpicwindow;
      MainWindow *mainwindowchat;
+
 
 };
 

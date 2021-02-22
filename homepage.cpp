@@ -7,10 +7,7 @@
 #include <QStringList>
 #include <QVector>
 
-
 using namespace std;
-
-
 
 //i ve added to this first part parmaerter
 homepage::homepage(User* User1,QWidget *parent) :
@@ -20,7 +17,7 @@ homepage::homepage(User* User1,QWidget *parent) :
     this->setFixedSize(1100,800);
     this->User1 = User1 ;
 
-    LogginUser = "testing";
+   // LogginUser = "testing";
     ui->setupUi(this);
     //label
     ui->User1_Username->setText(this->User1->getUsername());
@@ -42,7 +39,6 @@ void homepage::friendsetup(){
 
      QSqlQuery query(QSqlDatabase::database("QMYSQL"));
     //ui->label_9->setText(User1->friendslist);
-
 
     QString delimiter = ",";
     QStringList fl = User1->getFriendslist().split(",");
@@ -97,6 +93,22 @@ void homepage::ProfileSetup(){
 //
 }
 
+void homepage::on_ViewHistory_clicked()
+{
+
+    createTopic();
+    this->hide();
+    //Qtring Username1 = LogginUser;
+    QString Username1 = this->User1->getUsername();
+    QString Username2 = User2->getUsername();
+    //QString FT = Topic ;
+
+
+     historyapp = new historyappwindow(User1,User2,this->Topic, this);
+
+     historyapp ->show();
+
+}
 
 
 void homepage::on_EditProfilePic_clicked(){
@@ -219,7 +231,7 @@ void homepage::on_SendMessage_clicked()
     createTopic();
     this->hide();
     //Qtring Username1 = LogginUser;
-    QString Username1 = User1->getUsername();
+    QString Username1 = this->User1->getUsername();
     QString Username2 = User2->getUsername();
     //QString FT = Topic ;
 
@@ -235,4 +247,11 @@ void homepage::on_listoffriends_itemClicked()
 {
     QString SelectedFilename = ui->listoffriends->currentItem()->text();
     ui->SearchBox->setText(SelectedFilename);
+}
+
+
+void homepage::on_pushButton_clicked()
+{
+    //
+
 }

@@ -2,6 +2,10 @@
 #define DATABASECONNECTION_H
 
 #include <QSqlDatabase>
+#include <QMainWindow>
+#include <QtSql>
+#include <QSqlDatabase>
+#include <QMessageBox>
 class databaseconnection
 {
 

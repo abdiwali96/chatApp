@@ -9,6 +9,7 @@ HEADERS = \
    chat.h \
    databaseconnection.h \
    editprofile.h \
+   historyappwindow.h \
    homepage.h \
    mainwindow.h \
    uploadpic.h \
@@ -21,6 +22,7 @@ SOURCES = \
    chat.cpp \
    databaseconnection.cpp \
    editprofile.cpp \
+   historyappwindow.cpp \
    homepage.cpp \
    mainwindow.cpp \
    uploadpic.cpp
@@ -28,6 +30,7 @@ SOURCES = \
 FORMS = \
    $$PWD/login.ui \
    editprofile.ui \
+   historyappwindow.ui \
    homepage.ui \
    mainwindow.ui \
    uploadpic.ui

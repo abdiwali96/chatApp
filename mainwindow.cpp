@@ -259,7 +259,7 @@ void MainWindow::GetMessageHistory(){
 
     // HAVE AN IF STATEMENT
     QSqlQuery queryH(QSqlDatabase::database("QMYSQL"));
-    queryH.prepare(QString("SELECT * FROM ChatLogs WHERE Topicname = :Topicname ORDER BY chatLogID DESC LIMIT 1"));
+    queryH.prepare(QString("SELECT * FROM ChatLogs WHERE Topicname = :Topicname"));
 
     queryH.bindValue(":Topicname",this->chatobject->gettopicname());
     //condition below is if condition fails to execute
