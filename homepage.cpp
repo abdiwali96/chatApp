@@ -24,7 +24,7 @@ homepage::homepage(User* User1,QWidget *parent) :
     ui->User1_Email->setText(this->User1->getEmail());
     ui->User1_Mobile->setText(this->User1->getMobile());
 
-    ui->ProfilePic->setPixmap(this->User1->getProfilepic().scaled (265,235,Qt::KeepAspectRatio));
+    ui->ProfilePic->setPixmap(this->User1->getProfilepic().scaled (250,170));
    // ProfileSetup();
     friendsetup();
 
@@ -74,9 +74,16 @@ void homepage::friendsetup(){
 
       }
 
+
+
+
     foreach(QString i, friendUsernames) {
 
-        ui->listoffriends->addItem(i);
+        QListWidgetItem *item  = new QListWidgetItem(QIcon(":/images/emptyprofilepic.png"),i);
+
+
+
+        ui->listoffriends->addItem(item);
 
     }
      this->friendUsernames = friendUsernames ;
@@ -109,6 +116,22 @@ void homepage::on_ViewHistory_clicked()
      historyapp ->show();
 
 }
+
+void homepage::on_ViewAllHistory_clicked()
+{
+
+
+    this->hide();
+
+
+    User2 = new User("","","", "", QPixmap(":/images/emptyprofilepic.png"), "");
+    historyapp = new historyappwindow(User1,User2,"", this);
+
+     historyapp ->show();
+
+
+}
+
 
 
 void homepage::on_EditProfilePic_clicked(){
@@ -255,3 +278,4 @@ void homepage::on_pushButton_clicked()
     //
 
 }
+

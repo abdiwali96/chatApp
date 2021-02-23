@@ -12,7 +12,15 @@ historyappwindow::historyappwindow(User* User1,User* User2,QString Topic, QWidge
     this->Topic = Topic;
     this->chatobject->setmessage({});
     this->chatobject->addTOmessage("");
+    ui->SearchBox->setText(this->Topic);
+     this->chatobject->setttopicname(this->Topic);
+
+    ui->checkBox->setText("Has Attachment \n Conent");
+
+
     GetMessageHistory();
+
+
 
 }
 
@@ -37,32 +45,41 @@ void historyappwindow::SetObject2(QString s) {
       User2->setUsername(s);
 }
 
-QString historyappwindow::GetTopic(){
-      return Topic;
-}
+
 
 void historyappwindow::GetMessageHistory(){
+
+    this->chatobject->setttopicname(ui->SearchBox->text());
+
+   qDebug() << this->chatobject->gettopicname();
+
+
+
 
     ui->listofmessages->clear();
 
     // HAVE AN IF STATEMENT
-    QSqlQuery queryH(QSqlDatabase::database("QMYSQL"));
-    queryH.prepare(QString("SELECT * FROM ChatLogs WHERE Topicname = :Topicname"));
+    QSqlQuery querya(QSqlDatabase::database("QMYSQL"));
+    querya.prepare(QString("SELECT * FROM ChatLogs WHERE Topicname = :Topicname OR User1log = :User1log AND User2log = :me or User1log = :me AND User2log = :User2log "));
 
-    queryH.bindValue(":Topicname",this->GetTopic());
+    querya.bindValue(":Topicname",this->chatobject->gettopicname());
+    querya.bindValue(":User1log",this->chatobject->gettopicname());
+    querya.bindValue(":User2log",this->chatobject->gettopicname());
+    querya.bindValue(":me",this->User1->getUsername());
     //condition below is if condition fails to execute
-    queryH.exec();
-     while(queryH.next()){
+    querya.exec();
+     while(querya.next()){
 
         // int dbmessage1 = queryH.value(0).toInt();
           // qDebug() << dbmessage1;
         // this->chatobject->setOldchatlogid(queryH.value(0).toInt());
-         int dbchatlogID = queryH.value(0).toInt();
-         QString StrdbcahtlogID = queryH.value(0).toString();
-         QString dbmessagetopic = queryH.value(1).toString();
-         QString dbmessagedate = queryH.value(3).toString();
+         //int dbchatlogID = queryH.value(0).toInt();
+         QString StrdbcahtlogID = querya.value(0).toString();
+         QString dbmessagetopic = querya.value(1).toString();
+         QString dbmessagedate = querya.value(4).toString();
 
-         this->dbmessage = queryH.value(5).toString();
+         this->dbmessage = querya.value(5).toString();
+
 
           ui->listofmessages->addItem(StrdbcahtlogID + ", | Topic:" +dbmessagetopic + " | Date: "+ dbmessagedate);
 
@@ -74,6 +91,11 @@ void historyappwindow::searchRescord(){
     /*
 
      */
+}
+
+void historyappwindow::Query(){
+    ui->listofmessages->clear();
+
 }
 
 
@@ -111,4 +133,21 @@ void historyappwindow::on_OpenAttachment_clicked()
 
 
 
+}
+
+void historyappwindow::on_pushButton_2_clicked()
+{
+      ui->listofmessages->sortItems(Qt::DescendingOrder);
+
+}
+
+void historyappwindow::on_pushButton_clicked()
+{
+     ui->listofmessages->sortItems(Qt::AscendingOrder);
+}
+
+void historyappwindow::on_Searchbutton_clicked()
+{
+
+    GetMessageHistory();
 }

@@ -3,5 +3,6 @@
         <file>logo.png</file>
         <file>bg.png</file>
         <file>emptyprofilepic.png</file>
+        <file>foldericon.png</file>
     </qresource>
 </RCC>

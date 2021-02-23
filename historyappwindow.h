@@ -29,13 +29,22 @@ public:
 
     void searchRescord();
 
-    QString GetTopic();
+    void Query();
+
+
+
 
     QString dbmessage;
     QString m;
 
 private slots:
     void on_OpenAttachment_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_Searchbutton_clicked();
 
 private:
     Ui::historyappwindow *ui;

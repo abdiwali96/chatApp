@@ -67,11 +67,14 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_ViewAllHistory_clicked();
+
 private:
     Ui::homepage *ui;
 
     User *User1;
     User *User2;
+
 
     //I added below
      QString LogginUser;

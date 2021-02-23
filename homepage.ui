@@ -51,11 +51,16 @@ background-color: rgb(243, 243, 243);
     <property name="title">
      <string>Friends List</string>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
-     <item>
-      <widget class="QListWidget" name="listoffriends"/>
-     </item>
-    </layout>
+    <widget class="QListWidget" name="listoffriends">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>261</width>
+       <height>311</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
    <widget class="Line" name="line_2">
     <property name="geometry">
@@ -85,41 +90,41 @@ background-color: rgb(243, 243, 243);
 	background-color: rgb(243, 243, 243);
 }</string>
     </property>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="LoginIcon" native="true">
      <property name="geometry">
       <rect>
-       <x>290</x>
-       <y>10</y>
-       <width>431</width>
-       <height>81</height>
+       <x>291</x>
+       <y>11</y>
+       <width>71</width>
+       <height>79</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_5">
-      <item>
-       <widget class="QWidget" name="LoginIcon" native="true">
-        <property name="styleSheet">
-         <string notr="true">#LoginIcon {
+     <property name="styleSheet">
+      <string notr="true">#LoginIcon {
 	border-image: url(:/images/logo.png);
 }</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_3">
-        <property name="font">
-         <font>
-          <family>Ubuntu Condensed</family>
-          <pointsize>48</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Super Message</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>368</x>
+       <y>11</y>
+       <width>352</width>
+       <height>73</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Ubuntu Condensed</family>
+       <pointsize>48</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Super Message</string>
+     </property>
     </widget>
    </widget>
    <widget class="Line" name="line_3">
@@ -155,34 +160,41 @@ background-color: rgb(243, 243, 243);
     <property name="title">
      <string>Profile Picture</string>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_7">
-     <item>
-      <widget class="QLabel" name="ProfilePic">
-       <property name="styleSheet">
-        <string notr="true">#ProfilePic{
+    <widget class="QLabel" name="ProfilePic">
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>41</y>
+       <width>249</width>
+       <height>198</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#ProfilePic{
 
-background-image: url(:/images/emptyprofilepic.png);
-height: 20px;
-width: 20px;
 }
 </string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="src.qrc">:/images/emptyprofilepic.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="EditProfilePic">
-       <property name="text">
-        <string>Upload New Picture</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="src.qrc">:/images/emptyprofilepic.png</pixmap>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="EditProfilePic">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>240</y>
+       <width>231</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Upload New Picture</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
@@ -437,46 +449,26 @@ width: 20px;
     <property name="title">
      <string>Member: Logged in</string>
     </property>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QPushButton" name="EditProfilebutton">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>30</y>
-       <width>81</width>
-       <height>71</height>
+       <x>490</x>
+       <y>50</y>
+       <width>131</width>
+       <height>25</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Username:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Email:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Mobile:</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <property name="text">
+      <string>Edit Profile</string>
+     </property>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>30</y>
-       <width>201</width>
-       <height>74</height>
+       <x>141</x>
+       <y>31</y>
+       <width>301</width>
+       <height>68</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -508,18 +500,38 @@ width: 20px;
       </item>
      </layout>
     </widget>
-    <widget class="QPushButton" name="EditProfilebutton">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
-       <x>490</x>
-       <y>50</y>
-       <width>131</width>
-       <height>25</height>
+       <x>41</x>
+       <y>31</y>
+       <width>75</width>
+       <height>65</height>
       </rect>
      </property>
-     <property name="text">
-      <string>Edit Profile</string>
-     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Username:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Email:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Mobile:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
   </widget>

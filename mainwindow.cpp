@@ -305,8 +305,10 @@ void MainWindow::GetListUpdate(){
 
     while (query1.next()) {
 
-        //QListWidgetItem *itm =  new QListWidgetItem(query1.value(3).toString());
-        ui->Attachmentview->addItem(query1.value(3).toString());
+        QListWidgetItem *item  = new QListWidgetItem(QIcon(":/images/foldericon.png"),query1.value(3).toString());
+
+
+        ui->Attachmentview->addItem(item);
     }
 
     /*
