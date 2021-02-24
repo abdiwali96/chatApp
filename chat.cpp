@@ -57,3 +57,5 @@ QStringList chat::getmessage() {
 QString chat::gettopicname() {
       return topicname;
     }
+
+

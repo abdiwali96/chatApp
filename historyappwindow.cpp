@@ -15,7 +15,9 @@ historyappwindow::historyappwindow(User* User1,User* User2,QString Topic, QWidge
     ui->SearchBox->setText(this->Topic);
      this->chatobject->setttopicname(this->Topic);
 
-    ui->checkBox->setText("Has Attachment \n Conent");
+    ui->checkBox->setText(" Only Has \n Attachment Conent");
+
+
 
 
     GetMessageHistory();
@@ -60,28 +62,43 @@ void historyappwindow::GetMessageHistory(){
 
     // HAVE AN IF STATEMENT
     QSqlQuery querya(QSqlDatabase::database("QMYSQL"));
-    querya.prepare(QString("SELECT * FROM ChatLogs WHERE Topicname = :Topicname OR User1log = :User1log AND User2log = :me or User1log = :me AND User2log = :User2log "));
+    querya.prepare(QString("SELECT * FROM ChatLogs WHERE Topicname = :Topicname AND User1log = :me OR User1log = :me AND User2log = :User2log "));
 
     querya.bindValue(":Topicname",this->chatobject->gettopicname());
-    querya.bindValue(":User1log",this->chatobject->gettopicname());
+
     querya.bindValue(":User2log",this->chatobject->gettopicname());
     querya.bindValue(":me",this->User1->getUsername());
+
+
     //condition below is if condition fails to execute
     querya.exec();
      while(querya.next()){
 
-        // int dbmessage1 = queryH.value(0).toInt();
-          // qDebug() << dbmessage1;
-        // this->chatobject->setOldchatlogid(queryH.value(0).toInt());
-         //int dbchatlogID = queryH.value(0).toInt();
+
          QString StrdbcahtlogID = querya.value(0).toString();
+         int chid = querya.value(0).toInt();
          QString dbmessagetopic = querya.value(1).toString();
          QString dbmessagedate = querya.value(4).toString();
 
          this->dbmessage = querya.value(5).toString();
 
+         if(ui->checkBox->isChecked()){
+             QSqlQuery querya1(QSqlDatabase::database("QMYSQL"));
+             querya1.prepare(QString("SELECT * FROM attachedfiles WHERE chatLogID = :chatLogID"));
+             querya1.bindValue(":chatLogID",chid);
+
+             querya1.exec();
+             while(querya1.next()){
+             ui->listofmessages->addItem(StrdbcahtlogID + ", | Topic:" +dbmessagetopic + " | Date: "+ dbmessagedate);
+             }
+         } else{
+
 
           ui->listofmessages->addItem(StrdbcahtlogID + ", | Topic:" +dbmessagetopic + " | Date: "+ dbmessagedate);
+         }
+
+
+
 
 
      }
