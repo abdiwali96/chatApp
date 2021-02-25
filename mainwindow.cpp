@@ -268,7 +268,7 @@ void MainWindow::GetMessageHistory(){
 
         // int dbmessage1 = queryH.value(0).toInt();
           // qDebug() << dbmessage1;
-         this->chatobject->setOldchatlogid(queryH.value(0).toInt());
+         this->chatobject->setOldchatlogid(queryH.value(0).toInt()+1);
 
           QString dbmessage = queryH.value(5).toString();
           QStringList fl = dbmessage.split(",");

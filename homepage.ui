@@ -355,12 +355,64 @@ background-color: rgb(243, 243, 243);
     <property name="title">
      <string>Stats</string>
     </property>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>40</y>
+       <width>221</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Total Number Of Conversations:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>120</y>
+       <width>221</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Number of Attached files sent:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>160</y>
+       <width>141</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Number of Friends:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>80</y>
+       <width>241</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>No. messages in the last 24 hours:</string>
+     </property>
+    </widget>
     <widget class="QPushButton" name="ViewAllHistory">
      <property name="geometry">
       <rect>
-       <x>480</x>
-       <y>30</y>
-       <width>141</width>
+       <x>450</x>
+       <y>50</y>
+       <width>171</width>
        <height>25</height>
       </rect>
      </property>
@@ -368,17 +420,69 @@ background-color: rgb(243, 243, 243);
       <string>View All History</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="StatisticalReport">
+    <widget class="QLabel" name="label_11">
      <property name="geometry">
       <rect>
-       <x>480</x>
-       <y>70</y>
-       <width>141</width>
+       <x>310</x>
+       <y>40</y>
+       <width>67</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>10</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_12">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>80</y>
+       <width>67</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>5</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_13">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>120</y>
+       <width>67</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>10</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>160</y>
+       <width>67</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>6</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>10</y>
+       <width>171</width>
        <height>25</height>
       </rect>
      </property>
      <property name="text">
-      <string>Statistical Report</string>
+      <string>Content Search</string>
      </property>
     </widget>
    </widget>
@@ -452,8 +556,8 @@ background-color: rgb(243, 243, 243);
     <widget class="QPushButton" name="EditProfilebutton">
      <property name="geometry">
       <rect>
-       <x>490</x>
-       <y>50</y>
+       <x>470</x>
+       <y>40</y>
        <width>131</width>
        <height>25</height>
       </rect>
@@ -462,76 +566,88 @@ background-color: rgb(243, 243, 243);
       <string>Edit Profile</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>141</x>
-       <y>31</y>
-       <width>301</width>
-       <height>68</height>
+       <x>42</x>
+       <y>32</y>
+       <width>73</width>
+       <height>17</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QLabel" name="User1_Username">
-        <property name="text">
-         <string>Username</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="User1_Email">
-        <property name="font">
-         <font>
-          <pointsize>13</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Email</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="User1_Mobile">
-        <property name="text">
-         <string>Mobile</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <property name="text">
+      <string>Username:</string>
+     </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>41</x>
-       <y>31</y>
-       <width>75</width>
-       <height>65</height>
+       <x>42</x>
+       <y>55</y>
+       <width>41</width>
+       <height>17</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Username:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Email:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Mobile:</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <property name="text">
+      <string>Email:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>42</x>
+       <y>78</y>
+       <width>51</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mobile:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="User1_Username">
+     <property name="geometry">
+      <rect>
+       <x>142</x>
+       <y>32</y>
+       <width>151</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Username</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="User1_Email">
+     <property name="geometry">
+      <rect>
+       <x>142</x>
+       <y>55</y>
+       <width>251</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Email</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="User1_Mobile">
+     <property name="geometry">
+      <rect>
+       <x>142</x>
+       <y>81</y>
+       <width>201</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mobile</string>
+     </property>
     </widget>
    </widget>
   </widget>

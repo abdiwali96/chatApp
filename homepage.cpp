@@ -96,8 +96,16 @@ void homepage::friendsetup(){
 
 void homepage::ProfileSetup(){
 
+    QSqlQuery query1(QSqlDatabase::database("QMYSQL"));
+    query1.prepare(QString("SELECT * FROM members WHERE username = :username"));
 
-//
+    query1.bindValue(":username",this->User1->getUsername());
+    query1.exec();
+
+
+
+
+
 }
 
 void homepage::on_ViewHistory_clicked()
@@ -276,6 +284,12 @@ void homepage::on_listoffriends_itemClicked()
 void homepage::on_pushButton_clicked()
 {
     //
+    this->hide();
+
+
+    User2 = new User("","","", "", QPixmap(":/images/emptyprofilepic.png"), "");
+    contentsearchwindow = new contentsearch(User1,User2, this);
+    contentsearchwindow->show();
 
 }
 

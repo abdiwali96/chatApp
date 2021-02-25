@@ -8,7 +8,7 @@
 #include "editprofile.h"
 #include "mainwindow.h"
 #include "historyappwindow.h"
-
+#include "contentsearch.h"
 namespace Ui {
 class homepage;
 }
@@ -80,6 +80,7 @@ private:
      QString LogginUser;
      //
      historyappwindow *historyapp;
+     contentsearch *contentsearchwindow;
      Editprofile *editprofilecwindow;
      uploadpic *uploadpicwindow;
      MainWindow *mainwindowchat;
