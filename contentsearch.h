@@ -25,10 +25,26 @@ public:
 
     void SetObject2(QString s);
 
+    QString editdbmessage;
+
+    QString Themessage;
+
 private slots:
     void on_Searchbutton_clicked();
 
     void on_editselect_clicked();
+
+    void on_listofmessages_itemClicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_deletemessagebtn_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::contentsearch *ui;
@@ -36,6 +52,7 @@ private:
     User *User1;
 
     User *User2;
+
 };
 
 #endif // CONTENTSEARCH_H

@@ -28,6 +28,7 @@ homepage::homepage(User* User1,QWidget *parent) :
    // ProfileSetup();
     friendsetup();
 
+
 }
 
 homepage::~homepage()
@@ -92,6 +93,7 @@ void homepage::friendsetup(){
   // QString s = ui->listoffriends->currentItem()->text();
   // cout <<  << endl;
 
+     getNumerofMess();
 }
 
 void homepage::ProfileSetup(){
@@ -291,5 +293,22 @@ void homepage::on_pushButton_clicked()
     contentsearchwindow = new contentsearch(User1,User2, this);
     contentsearchwindow->show();
 
+}
+
+void homepage::getNumerofMess() {
+
+    QSqlQuery queryH(QSqlDatabase::database("QMYSQL"));
+    queryH.prepare(QString("SELECT * FROM ChatLogs WHERE User1log = :User1log"));
+
+    queryH.bindValue(":User1log",this->User1->getUsername());
+    queryH.exec();
+    int countnum = 0;
+
+    while(queryH.next()){
+        countnum++;
+    }
+
+
+    ui->nummessagelabel->setText(QString::number(countnum) + " Messages");
 }
 

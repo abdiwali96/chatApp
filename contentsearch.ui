@@ -17,8 +17,8 @@
    <widget class="QGroupBox" name="groupBox_4">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>150</y>
+      <x>60</x>
+      <y>140</y>
       <width>751</width>
       <height>61</height>
      </rect>
@@ -129,8 +129,8 @@
     <widget class="QWidget" name="LoginIcon" native="true">
      <property name="geometry">
       <rect>
-       <x>321</x>
-       <y>1</y>
+       <x>323</x>
+       <y>10</y>
        <width>71</width>
        <height>79</height>
       </rect>
@@ -144,8 +144,8 @@
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>398</x>
-       <y>1</y>
+       <x>400</x>
+       <y>10</y>
        <width>352</width>
        <height>73</height>
       </rect>
@@ -210,6 +210,45 @@
     </property>
     <property name="text">
      <string>Edit Select message</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>670</y>
+      <width>141</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Return home</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_7">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>150</y>
+      <width>241</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Go to Message search Window</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>140</y>
+      <width>3</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
     </property>
    </widget>
   </widget>

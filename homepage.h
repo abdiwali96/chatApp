@@ -28,6 +28,8 @@ public:
 
     void ProfileSetup();
 
+    void getNumerofMess();
+
 
     /*
     QString User1_ID;
