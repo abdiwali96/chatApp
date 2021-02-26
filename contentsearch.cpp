@@ -119,19 +119,33 @@ void contentsearch::on_pushButton_4_clicked()
 
 void contentsearch::on_deletemessagebtn_clicked()
 {
-    QSqlQuery queryH(QSqlDatabase::database("QMYSQL"));
-    queryH.prepare(QString("DELETE FROM ChatLogs WHERE User1log = :User1log AND Message = :Message OR User2log = :User2log AND Message = :Message"));
+    QString dbmessageline2 = ui->listofmessages->currentItem()->text();
+    QStringList fl2 = dbmessageline2.split(":");
+    QString oldphrase =  fl2.last();
 
+
+    this->editdbmessage = ui->lineEdit->text();
+
+
+   qDebug() << this->Themessage;
+   QString editmessage =  Themessage;
+
+   this->Themessage.replace(oldphrase,"");
+   qDebug() << this->Themessage;
+
+
+   QSqlQuery queryH(QSqlDatabase::database("QMYSQL"));
+   queryH.prepare("UPDATE ChatLogs SET Message = :NewMessage WHERE User1log = :User1log AND Message = :Message OR User2log = :User2log AND Message = :Message");
    queryH.bindValue(":User1log",this->GetObject()->getUsername());
    queryH.bindValue(":User2log",this->GetObject()->getUsername());
-   queryH.bindValue(":Message",this->Themessage);
-   //queryH.bindValue(":NewMessage",this->Themessage);
+   queryH.bindValue(":Message",editmessage);
+   queryH.bindValue(":NewMessage",this->Themessage);
 
-    queryH.exec();
+   queryH.exec();
+    QMessageBox::information(this,"Success","Message has been updated");
+    ui->lineEdit->clear();
+    ui->listofmessages->clear();
 
-   QMessageBox::information(this, "DELETE", "MESSAGE IS DELETED!");
-   ui->lineEdit->clear();
-   ui->listofmessages->clear();
 
 }
 

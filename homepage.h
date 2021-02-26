@@ -13,27 +13,69 @@ namespace Ui {
 class homepage;
 }
 
+/**
+ * @brief
+ *
+ */
 class homepage : public QMainWindow
 {
     Q_OBJECT
 
 public:
     //i added first part of parameter
+    /**
+     * @brief
+     *
+     * @param User1
+     * @param parent
+     */
     explicit homepage(User* User1,QWidget *parent = nullptr);
+    /**
+     * @brief
+     *
+     */
     ~homepage();
 
+    /**
+     * @brief
+     *
+     */
     void friendsetup();
 
+    /**
+     * @brief
+     *
+     */
     void createTopic();
 
+    /**
+     * @brief
+     *
+     */
     void ProfileSetup();
 
+    /**
+     * @brief
+     *
+     */
     void getNumerofMess();
 
+    /**
+     * @brief
+     *
+     */
     void getNumofMes24hrs();
 
+    /**
+     * @brief
+     *
+     */
     void getNumofAttach();
 
+    /**
+     * @brief
+     *
+     */
     void getFirstMessDate();
 
 
@@ -47,51 +89,87 @@ public:
 
     QString Topic;
 
-    QString delimiter;
+    QString delimiter; /**< TODO: describe */
 
-    QStringList fl ;
-    QStringList friendID;
-    QStringList friendUsernames;
-    QVector<int> friendsIdList;
-    QString friendusername;
+    QStringList fl ; /**< TODO: describe */
+    QStringList friendID; /**< TODO: describe */
+    QStringList friendUsernames; /**< TODO: describe */
+    QVector<int> friendsIdList; /**< TODO: describe */
+    QString friendusername; /**< TODO: describe */
 
 
 private slots:
 
+    /**
+     * @brief
+     *
+     */
     void on_EditProfilePic_clicked();
 
+    /**
+     * @brief
+     *
+     */
     void on_EditProfilebutton_clicked();
 
+    /**
+     * @brief
+     *
+     */
     void on_Searchbutton_clicked();
 
+    /**
+     * @brief
+     *
+     */
     void on_Addfriend_clicked();
 
+    /**
+     * @brief
+     *
+     */
     void on_SendMessage_clicked();
 
 
+    /**
+     * @brief
+     *
+     */
     void on_listoffriends_itemClicked();
 
+    /**
+     * @brief
+     *
+     */
     void on_ViewHistory_clicked();
 
+    /**
+     * @brief
+     *
+     */
     void on_pushButton_clicked();
 
+    /**
+     * @brief
+     *
+     */
     void on_ViewAllHistory_clicked();
 
 private:
-    Ui::homepage *ui;
+    Ui::homepage *ui; /**< TODO: describe */
 
-    User *User1;
-    User *User2;
+    User *User1; /**< TODO: describe */
+    User *User2; /**< TODO: describe */
 
 
     //I added below
-     QString LogginUser;
+     QString LogginUser; /**< TODO: describe */
      //
-     historyappwindow *historyapp;
-     contentsearch *contentsearchwindow;
-     Editprofile *editprofilecwindow;
-     uploadpic *uploadpicwindow;
-     MainWindow *mainwindowchat;
+     historyappwindow *historyapp; /**< TODO: describe */
+     contentsearch *contentsearchwindow; /**< TODO: describe */
+     Editprofile *editprofilecwindow; /**< TODO: describe */
+     uploadpic *uploadpicwindow; /**< TODO: describe */
+     MainWindow *mainwindowchat; /**< TODO: describe */
 
 
 };

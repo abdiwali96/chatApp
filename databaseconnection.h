@@ -6,15 +6,36 @@
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QMessageBox>
+/**
+ * @brief
+ *
+ */
 class databaseconnection
 {
 
 
 public:
 
+    /**
+     * @brief
+     *
+     */
     databaseconnection();
+    /**
+     * @brief
+     *
+     */
     void createData();
+    /**
+     * @brief
+     *
+     * @return bool
+     */
     bool connData();
+    /**
+     * @brief
+     *
+     */
     void discData();
 };
 

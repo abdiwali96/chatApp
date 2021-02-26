@@ -19,7 +19,6 @@ HEADERS = \
 SOURCES = \
    $$PWD/main.cpp \
    $$PWD/login.cpp \
-   User.cpp \
    chat.cpp \
    contentsearch.cpp \
    databaseconnection.cpp \
@@ -27,7 +26,8 @@ SOURCES = \
    historyappwindow.cpp \
    homepage.cpp \
    mainwindow.cpp \
-   uploadpic.cpp
+   uploadpic.cpp \
+   user.cpp
 
 FORMS = \
    $$PWD/login.ui \
