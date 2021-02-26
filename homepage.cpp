@@ -94,6 +94,10 @@ void homepage::friendsetup(){
   // cout <<  << endl;
 
      getNumerofMess();
+     getNumofMes24hrs();
+     getNumofAttach();
+     ui->label_14->setText(QString::number(ui->listoffriends->count()) + " Friends");
+     getFirstMessDate();
 }
 
 void homepage::ProfileSetup(){
@@ -312,3 +316,59 @@ void homepage::getNumerofMess() {
     ui->nummessagelabel->setText(QString::number(countnum) + " Messages");
 }
 
+void homepage::getNumofMes24hrs(){
+
+    QDateTime dateTime = dateTime.currentDateTime();
+    QString dateTimeString = dateTime.toString("yyyy-MM-dd");
+
+    QSqlQuery queryH(QSqlDatabase::database("QMYSQL"));
+    queryH.prepare(QString("SELECT * FROM ChatLogs WHERE User1log = :User1log "));
+
+    queryH.bindValue(":User1log",this->User1->getUsername());
+
+    queryH.exec();
+    int countnum = 0;
+
+    while(queryH.next()){
+
+        if(queryH.value(4).toString().contains(dateTimeString)){
+            countnum++;
+        }
+
+    }
+
+    ui->label_11->setText(QString::number(countnum) + " Messages");
+}
+void homepage::getNumofAttach(){
+
+    QSqlQuery queryH(QSqlDatabase::database("QMYSQL"));
+    queryH.prepare(QString("SELECT * FROM attachedfiles"));
+
+
+    queryH.exec();
+    int countnum = 0;
+
+    while(queryH.next()){
+
+        if(queryH.value(4).toString().contains(this->User1->getUsername())){
+            countnum++;
+        }
+
+    }
+
+    ui->label_13->setText(QString::number(countnum) + " Files");
+}
+
+void homepage::getFirstMessDate(){
+    QSqlQuery queryH(QSqlDatabase::database("QMYSQL"));
+    queryH.prepare(QString("SELECT * FROM ChatLogs WHERE User1log = :User1log "));
+    queryH.bindValue(":User1log",this->User1->getUsername());
+    queryH.exec();
+
+
+     if(queryH.first()){
+          ui->label_16->setText(queryH.value(4).toString());
+     }
+
+
+}

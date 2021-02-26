@@ -358,7 +358,7 @@ background-color: rgb(243, 243, 243);
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
-       <x>70</x>
+       <x>20</x>
        <y>40</y>
        <width>221</width>
        <height>20</height>
@@ -371,20 +371,20 @@ background-color: rgb(243, 243, 243);
     <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>50</x>
        <y>120</y>
-       <width>221</width>
+       <width>181</width>
        <height>17</height>
       </rect>
      </property>
      <property name="text">
-      <string>Number of Attached files sent:</string>
+      <string>Number of Attached files:</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_9">
      <property name="geometry">
       <rect>
-       <x>150</x>
+       <x>100</x>
        <y>160</y>
        <width>141</width>
        <height>17</height>
@@ -399,12 +399,12 @@ background-color: rgb(243, 243, 243);
       <rect>
        <x>60</x>
        <y>80</y>
-       <width>241</width>
+       <width>181</width>
        <height>20</height>
       </rect>
      </property>
      <property name="text">
-      <string>No. messages in the last 24 hours:</string>
+      <string>No. messages sent today:</string>
      </property>
     </widget>
     <widget class="QPushButton" name="ViewAllHistory">
@@ -423,48 +423,35 @@ background-color: rgb(243, 243, 243);
     <widget class="QLabel" name="nummessagelabel">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>260</x>
        <y>40</y>
-       <width>67</width>
+       <width>171</width>
        <height>17</height>
       </rect>
      </property>
      <property name="text">
-      <string>-</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_12">
-     <property name="geometry">
-      <rect>
-       <x>310</x>
-       <y>80</y>
-       <width>67</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>5</string>
+      <string>1</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_13">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>260</x>
        <y>120</y>
-       <width>67</width>
+       <width>221</width>
        <height>17</height>
       </rect>
      </property>
      <property name="text">
-      <string>10</string>
+      <string>0</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_14">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>260</x>
        <y>160</y>
-       <width>67</width>
+       <width>251</width>
        <height>17</height>
       </rect>
      </property>
@@ -488,7 +475,7 @@ background-color: rgb(243, 243, 243);
     <widget class="QLabel" name="label_15">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>30</x>
        <y>200</y>
        <width>201</width>
        <height>20</height>
@@ -501,7 +488,7 @@ background-color: rgb(243, 243, 243);
     <widget class="QLabel" name="label_16">
      <property name="geometry">
       <rect>
-       <x>300</x>
+       <x>250</x>
        <y>200</y>
        <width>241</width>
        <height>17</height>
@@ -509,6 +496,19 @@ background-color: rgb(243, 243, 243);
      </property>
      <property name="text">
       <string>11/02/2021</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>80</y>
+       <width>161</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
      </property>
     </widget>
    </widget>

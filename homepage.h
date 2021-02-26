@@ -30,6 +30,12 @@ public:
 
     void getNumerofMess();
 
+    void getNumofMes24hrs();
+
+    void getNumofAttach();
+
+    void getFirstMessDate();
+
 
     /*
     QString User1_ID;
