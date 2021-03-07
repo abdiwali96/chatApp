@@ -9,25 +9,20 @@
 
 using namespace std;
 
-//i ve added to this first part parmaerter
+
 homepage::homepage(User* User1,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::homepage)
 {
     this->setFixedSize(1100,800);
     this->User1 = User1 ;
-
-   // LogginUser = "testing";
     ui->setupUi(this);
-    //label
     ui->User1_Username->setText(this->User1->getUsername());
     ui->User1_Email->setText(this->User1->getEmail());
     ui->User1_Mobile->setText(this->User1->getMobile());
-
     ui->ProfilePic->setPixmap(this->User1->getProfilepic().scaled (250,170));
-   // ProfileSetup();
+    ProfileSetup();
     friendsetup();
-
 
 }
 
@@ -37,19 +32,17 @@ homepage::~homepage()
 }
 
 void homepage::friendsetup(){
+    ui->listoffriends->clear();
 
-     QSqlQuery query(QSqlDatabase::database("QMYSQL"));
-    //ui->label_9->setText(User1->friendslist);
 
+    QSqlQuery query(QSqlDatabase::database("QMYSQL"));
     QString delimiter = ",";
     QStringList fl = User1->getFriendslist().split(",");
-
-
     QVector<int> friendsIdList;
     QStringList friendID;
     QStringList friendUsernames  ;
 
-
+    QList<QPixmap> piclist;
 
     for(QString number :fl){
         friendsIdList.append(number.toInt());
@@ -70,28 +63,45 @@ void homepage::friendsetup(){
 
         friendID.append(friendID);
         friendUsernames.append(friendusernamerow);
-        // ui->listoffriends->addItem(friendUsernames);
+
+
+        if(query.value(5).toByteArray().isEmpty()){
+            QImage image;
+            QByteArray byte1;
+
+            QFile file(":/images/emptyprofilepic.png");
+            byte1 = file.readAll();
+            if(file.open(QIODevice::ReadOnly))
+                {
+                    byte1 = file.readAll();
+                    file.close();
+                }
+            QPixmap friendavatar = QPixmap();
+            friendavatar.loadFromData(byte1);
+            piclist.append(friendavatar);
+
+        }else{
+            QByteArray PictureFromDatabase = query.value(5).toByteArray();
+            QPixmap friendavatar = QPixmap();
+            friendavatar.loadFromData(PictureFromDatabase);
+            piclist.append(friendavatar);
         }
 
       }
+    }
+
+
+        for (int i = 0; i < friendUsernames.count(); i++) {
+
+
+            QListWidgetItem *item  = new QListWidgetItem(piclist[i],friendUsernames[i]);
+            ui->listoffriends->addItem(item);
 
 
 
-
-    foreach(QString i, friendUsernames) {
-
-        QListWidgetItem *item  = new QListWidgetItem(QIcon(":/images/emptyprofilepic.png"),i);
-
-
-
-        ui->listoffriends->addItem(item);
 
     }
      this->friendUsernames = friendUsernames ;
-
-
-  // QString s = ui->listoffriends->currentItem()->text();
-  // cout <<  << endl;
 
      getNumerofMess();
      getNumofMes24hrs();
@@ -108,53 +118,37 @@ void homepage::ProfileSetup(){
     query1.bindValue(":username",this->User1->getUsername());
     query1.exec();
 
-
-
-
-
 }
 
 void homepage::on_ViewHistory_clicked()
 {
+    if(ui->SearchBox->text().isEmpty()){
+         QMessageBox::information(this,"SORRY","YOU NEED TO FIRST ENTER OR SELECT A USERNAME");
+    }else{
+        createTopic();
+        this->hide();
+        QString Username1 = this->User1->getUsername();
+        QString Username2 = User2->getUsername();
 
-    createTopic();
-    this->hide();
-    //Qtring Username1 = LogginUser;
-    QString Username1 = this->User1->getUsername();
-    QString Username2 = User2->getUsername();
-    //QString FT = Topic ;
-
-
-     historyapp = new historyappwindow(User1,User2,this->Topic, this);
-
-     historyapp ->show();
+         historyapp = new historyappwindow(User1,User2,this->Topic, this);
+         historyapp ->show();
+    }
 
 }
 
 void homepage::on_ViewAllHistory_clicked()
 {
-
-
     this->hide();
-
-
     User2 = new User("","","", "", QPixmap(":/images/emptyprofilepic.png"), "");
     historyapp = new historyappwindow(User1,User2,"", this);
-
-     historyapp ->show();
-
-
+    historyapp ->show();
 }
-
 
 
 void homepage::on_EditProfilePic_clicked(){
 
     this->hide();
-    //QString SendOverUsername = LogginUser;
-
     uploadpicwindow = new uploadpic(User1,this);
-
     uploadpicwindow->show();
 
 }
@@ -162,12 +156,8 @@ void homepage::on_EditProfilePic_clicked(){
 void homepage::on_EditProfilebutton_clicked()
 {
     this->hide();
-    //QString SendOverUsername = LogginUser;
-
     editprofilecwindow = new Editprofile(User1,this);
-
     editprofilecwindow->show();
-
 }
 
 void homepage::on_Searchbutton_clicked()
@@ -179,15 +169,12 @@ void homepage::on_Searchbutton_clicked()
     query1.bindValue(":username",Searchmember);
     query1.exec();
 
-
     if(query1.next()){
 
         QString User2_ID = query1.value(0).toString();
         QString User2_Username = query1.value(1).toString();
-        //QString User1_UfriendsIdListsername = query.value(1).toString();
         QString User2_Email = query1.value(3).toString();
         QString User2_Mobile = query1.value(4).toString();
-
         //AVATAR
         QByteArray PictureFromDatabase2 =query1.value(5).toByteArray();
         QPixmap User1_Profile2 = QPixmap();
@@ -195,89 +182,79 @@ void homepage::on_Searchbutton_clicked()
 
         //FriendsID
         QString User2_friendslistnum = query1.value(6).toString();
-
-        //this->userobject2->setId(User2_ID);
-       // this->userobject2->setUsername(User2_Username);
-        //this->userobject2->setEmail(User2_Email);
-        //this->userobject2->setMobile(User2_Mobile);
-        //this->userobject2->setProfilepic(User1_Profile2);
-        //this->userobject2->setFriendslist(User2_friendslistnum);
-
         User2 = new User(User2_ID,User2_Username,User2_Email, User2_Mobile, User1_Profile2, User2_friendslistnum);
-
 
       QMessageBox::information(this,"Success","FOUND USER");
       ui->searchusernameresult->setText(User2->getUsername());
       ui->searchemailresult->setText(User2->getEmail());
-
-
-      }
-
-
+    }else {
+         QMessageBox::information(this,"SORRY","NO USER FOUND");
+    }
 }
 
 void homepage::on_Addfriend_clicked()
 {
-
-    bool found = (std::find(this->friendUsernames.begin(), this->friendUsernames.end(), User2->getUsername()) != this->friendUsernames.end());
-
-    if (found){
-          QMessageBox::information(this,"SORRY","USER IS ALREADY A FRIEND");
+    if(ui->SearchBox->text().isEmpty()){
+         QMessageBox::information(this,"SORRY","YOU NEED TO FIRST ENTER OR SELECT A USERNAME");
     }else {
-        QMessageBox::information(this,"DONE","USER IS ADDED TO YOUR FRIENDS LIST");
+        bool found = (std::find(this->friendUsernames.begin(), this->friendUsernames.end(), User2->getUsername()) != this->friendUsernames.end());
 
-        QSqlQuery query1(QSqlDatabase::database("QMYSQL"));
-        query1.prepare("UPDATE members SET Numberoffriends = :Numberoffriends WHERE username = :username");
-        query1.bindValue(":username",User1->getUsername());
+        if (found){
+              QMessageBox::information(this,"SORRY","USER IS ALREADY A FRIEND");
+        }else {
+            QMessageBox::information(this,"DONE","USER IS ADDED TO YOUR FRIENDS LIST");
+
+            QSqlQuery query1(QSqlDatabase::database("QMYSQL"));
+            query1.prepare("UPDATE members SET Numberoffriends = :Numberoffriends WHERE username = :username");
+            query1.bindValue(":username",User1->getUsername());
+
+            query1.bindValue(":Numberoffriends",User1->getFriendslist() + "," +User2->getId());
+            query1.exec();
+            //QListWidgetItem *item  = new QListWidgetItem(QIcon(":/images/emptyprofilepic.png"),ui->SearchBox->text());
+           // ui->listoffriends->addItem(item);
+
+            User1->setFriendslist(User1->getFriendslist() + "," + User2->getId());
+            ProfileSetup();
+            friendsetup();
 
 
-        query1.bindValue(":Numberoffriends",User1->getFriendslist() + "," +User2->getId());
-        query1.exec();
 
-
-
+        }
+        //ui->listoffriends->clear();
+        //ProfileSetup();
+        //friendsetup();
     }
-    ui->listoffriends->clear();
-    ProfileSetup();
-    friendsetup();
-
 
 }
 
 void homepage::createTopic()
 {
+    // Algortihm to create Topic for USER1 to USER 2
     QString Topic;
-
     int FristTopic = User1->getId().toInt() ;
     int SecondTopic = User2->getId().toInt();
 
     if (FristTopic > SecondTopic){
-
         Topic = User1->getUsername() + "2" + User2->getUsername() ;
     }else {
-
        Topic = User2->getUsername() + "2" + User1->getUsername() ;
     }
-
    this->Topic = Topic;
-
 }
 
 void homepage::on_SendMessage_clicked()
 {
-    createTopic();
-    this->hide();
-    //Qtring Username1 = LogginUser;
-    QString Username1 = this->User1->getUsername();
-    QString Username2 = User2->getUsername();
-    //QString FT = Topic ;
-
-    mainwindowchat = new MainWindow(User1,User2,this->Topic, this);
-
-    mainwindowchat->show();
-
+    if(ui->SearchBox->text().isEmpty()){
+         QMessageBox::information(this,"SORRY","YOU NEED TO FIRST ENTER OR SELECT A USERNAME");
+    }else{
+        createTopic();
+        this->hide();
+        QString Username1 = this->User1->getUsername();
+        QString Username2 = User2->getUsername();
+        mainwindowchat = new MainWindow(User1,User2,this->Topic, this);
+        mainwindowchat->show();
+    }
 }
-
 
 
 void homepage::on_listoffriends_itemClicked()
@@ -289,10 +266,7 @@ void homepage::on_listoffriends_itemClicked()
 
 void homepage::on_pushButton_clicked()
 {
-    //
     this->hide();
-
-
     User2 = new User("","","", "", QPixmap(":/images/emptyprofilepic.png"), "");
     contentsearchwindow = new contentsearch(User1,User2, this);
     contentsearchwindow->show();
@@ -311,8 +285,6 @@ void homepage::getNumerofMess() {
     while(queryH.next()){
         countnum++;
     }
-
-
     ui->nummessagelabel->setText(QString::number(countnum) + " Messages");
 }
 
@@ -323,18 +295,14 @@ void homepage::getNumofMes24hrs(){
 
     QSqlQuery queryH(QSqlDatabase::database("QMYSQL"));
     queryH.prepare(QString("SELECT * FROM ChatLogs WHERE User1log = :User1log "));
-
     queryH.bindValue(":User1log",this->User1->getUsername());
-
     queryH.exec();
     int countnum = 0;
 
     while(queryH.next()){
-
         if(queryH.value(4).toString().contains(dateTimeString)){
             countnum++;
         }
-
     }
 
     ui->label_11->setText(QString::number(countnum) + " Messages");
@@ -343,17 +311,13 @@ void homepage::getNumofAttach(){
 
     QSqlQuery queryH(QSqlDatabase::database("QMYSQL"));
     queryH.prepare(QString("SELECT * FROM attachedfiles"));
-
-
     queryH.exec();
     int countnum = 0;
-
     while(queryH.next()){
 
         if(queryH.value(4).toString().contains(this->User1->getUsername())){
             countnum++;
         }
-
     }
 
     ui->label_13->setText(QString::number(countnum) + " Files");
@@ -365,10 +329,10 @@ void homepage::getFirstMessDate(){
     queryH.bindValue(":User1log",this->User1->getUsername());
     queryH.exec();
 
-
      if(queryH.first()){
-          ui->label_16->setText(queryH.value(4).toString());
+
+          QString delimiter = "_";
+          QStringList datessplit = queryH.value(4).toString().split("_");
+           ui->label_16->setText(datessplit.first());
      }
-
-
 }

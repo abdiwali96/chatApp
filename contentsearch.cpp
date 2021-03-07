@@ -37,15 +37,12 @@ void contentsearch::SetObject2(QString s) {
 
 void contentsearch::on_Searchbutton_clicked()
 {
-    //Need to stop empty search
    ui->listofmessages->clear();
    QString searchphrase = ui->SearchBox->text();
 
    QSqlQuery queryH(QSqlDatabase::database("QMYSQL"));
    queryH.prepare(QString("SELECT * FROM ChatLogs WHERE User1log = :User1log"));
-
    queryH.bindValue(":User1log",this->GetObject()->getUsername());
-   //queryH.bindValue(":User2log",this->GetObject()->getUsername());
 
    queryH.exec();
 

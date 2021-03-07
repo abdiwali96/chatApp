@@ -187,8 +187,8 @@
    <widget class="QGroupBox" name="groupBox_4">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>130</y>
+      <x>180</x>
+      <y>140</y>
       <width>751</width>
       <height>61</height>
      </rect>
@@ -279,32 +279,6 @@
     </property>
     <property name="text">
      <string>ADD</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_7">
-    <property name="geometry">
-     <rect>
-      <x>840</x>
-      <y>140</y>
-      <width>241</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Go to Edit content Window</string>
-    </property>
-   </widget>
-   <widget class="Line" name="line_2">
-    <property name="geometry">
-     <rect>
-      <x>820</x>
-      <y>130</y>
-      <width>3</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
     </property>
    </widget>
   </widget>

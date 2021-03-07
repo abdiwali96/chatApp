@@ -55,9 +55,6 @@
 #include "databaseconnection.h"
 
 
-
-
-
 int main(int argc, char *argv[])
 {
 

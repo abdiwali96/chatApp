@@ -96,6 +96,7 @@ public:
     QStringList friendUsernames; /**< TODO: describe */
     QVector<int> friendsIdList; /**< TODO: describe */
     QString friendusername; /**< TODO: describe */
+    QList<QPixmap> piclist;
 
 
 private slots:

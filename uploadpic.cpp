@@ -10,13 +10,9 @@ uploadpic::uploadpic(User* User1, QWidget *parent) :
 {
     this->setFixedSize(800,600);
     this->User1 = User1 ;
-
     LogginUser2profilepic = User1->getUsername();
-
     ui->setupUi(this);
-
     ui->label->setText(User1->getUsername());
-
 }
 
 uploadpic::~uploadpic()
@@ -30,9 +26,7 @@ User* uploadpic::GetObject(){
 
 void uploadpic::setProfilepic(QPixmap s) {
       User1->setProfilepic(s);
-
 }
-
 
 void uploadpic::on_ReturnHomeBtn_clicked()
 {
@@ -41,8 +35,6 @@ void uploadpic::on_ReturnHomeBtn_clicked()
     this->close();
     picbacktohomepage = new homepage(this->GetObject(), this);
     picbacktohomepage->show();
-
-
 }
 
 void uploadpic::on_ChooseImage_clicked()
@@ -60,17 +52,13 @@ void uploadpic::on_ChooseImage_clicked()
                  QMessageBox::information(this,"Success","Image found");
                 ui->imageupload->setPixmap(QPixmap::fromImage(image));
                 this->setProfilepic(QPixmap::fromImage(image));
-
-
                 QFile file(filename);
                 byte = file.readAll();
                 if(file.open(QIODevice::ReadOnly))
                     {
                         byte = file.readAll();
                         file.close();
-
                     }
-
             }
             else {
                 //ERROR handling Stuff
@@ -80,15 +68,11 @@ void uploadpic::on_ChooseImage_clicked()
 }
 
 
-
-
 void uploadpic::on_Update_clicked()
 {
     if (this->byte.isEmpty()){
         QMessageBox::information(this,"try again","YOU HAVE NOT UPLOADED AN NEW IMAGE");
     }else {
-
-
         QMessageBox::information(this,"success","YOU HAVE UPLOADED AN NEW IMAGE");
         QSqlQuery query(QSqlDatabase::database("QMYSQL"));
         query.prepare("UPDATE members SET ProfilePic = :image WHERE username = :username");

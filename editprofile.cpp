@@ -9,12 +9,7 @@ Editprofile::Editprofile(User* User1,QWidget *parent) :
     ui(new Ui::Editprofile)
 {
     this->setFixedSize(600,500);
-
-   // LogginUser2editDets = User1->getUsername();
-
     this->User1 = User1 ;
-
-
     ui->setupUi(this);
     ui->Usernamelabel->setText(User1->getUsername());
 
@@ -36,9 +31,6 @@ void Editprofile::SetObject(QString s) {
 
 void Editprofile::on_pushButton_clicked()
 {
-   //  QString newpassword1 = ui->newpassword1->text();
-   //  QString newpassword2 = ui->newpassword2->text();
-
     QSqlQuery query1(QSqlDatabase::database("QMYSQL"));
     query1.prepare("UPDATE members SET password = :password WHERE username = :username");
     query1.bindValue(":username",this->GetObject()->getUsername());
@@ -72,16 +64,11 @@ void Editprofile::on_UpdatebuttonUsername_clicked()
           query.exec();
           QMessageBox::information(this,"VALID","YOUR USERNAME HAS BEEN UPDATED");
           this->SetObject(ui->usernameLogin->text());
-
     }
-
-
-
 }
 
 void Editprofile::on_ReturnHome_clicked()
 {
-
     homepage *picbacktohomepage;
     this->close();
     picbacktohomepage = new homepage(this->GetObject(), this);

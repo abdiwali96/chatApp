@@ -9,8 +9,11 @@ databaseconnection::databaseconnection()
 }
 
 void databaseconnection::createData(){
-    // Connecting to my MYSQL database
-     //QSqlDatabase database0= QSqlDatabase::addDatabase("QMYSQL");
+    QSqlDatabase database1 = QSqlDatabase::addDatabase("QMYSQL");
+    database1.setHostName("localhost");
+    database1.setUserName("admin");
+    database1.setPassword("admin");
+    database1.setDatabaseName("chatappdb");
 
 
 }

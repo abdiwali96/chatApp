@@ -18,13 +18,7 @@ historyappwindow::historyappwindow(User* User1,User* User2,QString Topic, QWidge
      this->chatobject->setttopicname(this->Topic);
 
     ui->checkBox->setText(" Only Has \n Attachment Conent");
-
-
-
-
     GetMessageHistory();
-
-
 
 }
 
@@ -54,15 +48,9 @@ void historyappwindow::SetObject2(QString s) {
 void historyappwindow::GetMessageHistory(){
 
     this->chatobject->setttopicname(ui->SearchBox->text());
-
-   qDebug() << this->chatobject->gettopicname();
-
-
-
-
+   //qDebug() << this->chatobject->gettopicname();
     ui->listofmessages->clear();
 
-    // HAVE AN IF STATEMENT
     QSqlQuery querya(QSqlDatabase::database("QMYSQL"));
     querya.prepare(QString("SELECT * FROM ChatLogs WHERE Topicname = :Topicname AND User1log = :me OR Topicname = :Topicname AND User2log = :me OR User1log = :me AND User2log = :User2log OR User1log = :User1log AND User2log = :me"));
 

@@ -41,7 +41,7 @@ int chat::getOldchatlogid() {
 int chat::getNewchatlogid() {
       return Newchatlogid;
  }
-    // Getter
+
 QString chat::getuser1() {
       return user1;
  }

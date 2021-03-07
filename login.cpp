@@ -1,9 +1,6 @@
 #include "login.h"
 #include "ui_login.h"
 
-
-
-
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Login)
@@ -17,12 +14,7 @@ Login::Login(QWidget *parent) :
     ui->usernameLogin->setPlaceholderText("Please Enter Username");
     ui->passwordLogin->setPlaceholderText("Please Enter Password");
 
-
-
 }
-
-
-
 
 Login::~Login()
 {
@@ -42,8 +34,18 @@ void Login::on_registerBtn_clicked()
         QString mobile = ui->mobile->text();
 
 
+        QImage image;
+        QByteArray byte;
 
-        //now this Query will insert the captured data above in to database
+        QFile file(":/images/emptyprofilepic.png");
+        byte = file.readAll();
+        if(file.open(QIODevice::ReadOnly))
+            {
+                byte = file.readAll();
+                file.close();
+            }
+
+
 
         QSqlQuery qry(QSqlDatabase::database("QMYSQL"));
 
@@ -54,7 +56,10 @@ void Login::on_registerBtn_clicked()
         qry.bindValue(":password", password);
         qry.bindValue(":email", email);
         qry.bindValue(":mobile", mobile);
-        qry.bindValue(":ProfilePic", "");
+
+        qry.bindValue(":ProfilePic", byte , QSql::In | QSql::Binary);
+
+
         qry.bindValue(":Numberoffriends", "");
 
         if(qry.exec()){
@@ -64,20 +69,13 @@ void Login::on_registerBtn_clicked()
             QMessageBox::information(this, "NOT Inserted", "Data is NOT Inserted Succesfully");
         }
 
-
-
-
        }else {
 
         QMessageBox::information(this,"Not Connected","Database is not connected");
-
     }
-
-
 }
 void Login::on_loginBtn_clicked()
 {
-
     databaseconnection registercon;
     registercon.connData();
     if (registercon.connData() == true)
@@ -88,16 +86,11 @@ void Login::on_loginBtn_clicked()
         //Get user data input
         QString username = ui->usernameLogin->text();
         QString password = ui->passwordLogin->text();
-
         //queries db to find user&pass
         QSqlQuery query(QSqlDatabase::database("QMYSQL"));
         query.prepare(QString("SELECT * FROM members WHERE username = :username AND password = :password"));
-
         query.bindValue(":username",username);
         query.bindValue(":password",password);
-
-        //results of the query
-
         //condition below is if condition fails to execute
         query.exec();
 
@@ -110,33 +103,22 @@ void Login::on_loginBtn_clicked()
             QByteArray PictureFromDatabase =query.value(5).toByteArray();
             QPixmap User1_Profile = QPixmap();
             User1_Profile.loadFromData(PictureFromDatabase);
-
                          //FriendsID
              QString User1_friendslistnum = query.value(6).toString();
-
              User1 = new User(User1_ID,User1_Username,User1_Email, User1_Mobile, User1_Profile, User1_friendslistnum);
+             QMessageBox::information(this,"Success","You are logged in");
 
-                 QMessageBox::information(this,"Success","You are logged in");
-
-                  this->hide();
-    //USER OBJECT CREATED HERE!!
-                  QString SendOverUsername = ui->usernameLogin->text();
-
-                  mainwindowchat = new homepage(User1, this);
-                  mainwindowchat->show();
-
-
+             this->hide();
+             QString SendOverUsername = ui->usernameLogin->text();
+             mainwindowchat = new homepage(User1, this);
+             mainwindowchat->show();
 
            } else{
 
                  QMessageBox::information(this,"Error","Wrong password or username");
-
            }
-
-
 
     }else {
         QMessageBox::information(this,"DATABASE FAILED", "Database connection failed");
     }
-
 }
