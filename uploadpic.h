@@ -10,76 +10,36 @@ namespace Ui {
 class uploadpic;
 }
 
-/**
- * @brief
- *
- */
+
 class uploadpic : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    /**
-     * @brief
-     *
-     * @param User1
-     * @param parent
-     */
+
     explicit uploadpic(User* User1,QWidget *parent = nullptr);
-    /**
-     * @brief
-     *
-     */
+
     ~uploadpic();
-     QByteArray byte; /**< TODO: describe */
+     QByteArray byte;
 
-
-     /**
-      * @brief
-      *
-      * @return User
-      */
      User* GetObject();
 
-     /**
-      * @brief
-      *
-      * @param s
-      */
      void setProfilepic(QPixmap s) ;
 
-
-
 private slots:
-    /**
-     * @brief
-     *
-     */
+
     void on_ReturnHomeBtn_clicked();
 
-    /**
-     * @brief
-     *
-     */
     void on_ChooseImage_clicked();
 
-
-
-    /**
-     * @brief
-     *
-     */
     void on_Update_clicked();
 
 private:
-    Ui::uploadpic *ui; /**< TODO: describe */
+    Ui::uploadpic *ui;
 
-    User *User1; /**< TODO: describe */
+    User *User1;
 
-    QString LogginUser2profilepic; /**< TODO: describe */
-
-
-
+    QString LogginUser2profilepic;
 
 };
 

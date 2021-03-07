@@ -22,6 +22,7 @@ MainWindow::MainWindow(User* User1,User* User2,QString Topic, QWidget *parent) :
     QDateTime dateTime = dateTime.currentDateTime();
     QString dateTimeString = dateTime.toString("yyyy-MM-dd_hh-mm-ss");
 
+
     this->chatobject->setdate(dateTimeString);
     this->chatobject->setmessage({});
     this->chatobject->addTOmessage("");

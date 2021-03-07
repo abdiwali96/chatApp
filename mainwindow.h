@@ -65,169 +65,72 @@ namespace Ui {
 class MainWindow;
 }
 
-/**
- * @brief
- *
- */
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    /**
-     * @brief
-     *
-     * @param User1
-     * @param User2
-     * @param Topic
-     * @param parent
-     */
+
     explicit MainWindow(User* User1,User* User2,QString Topic,  QWidget *parent = nullptr);
-    /**
-     * @brief
-     *
-     */
+
     ~MainWindow();
 
-    /**
-     * @brief
-     *
-     */
     void GetEmojis();
 
-    /**
-     * @brief
-     *
-     */
     void GetListUpdate();
 
-    /**
-     * @brief
-     *
-     */
     void GetMessageHistory();
 
-    /**
-     * @brief
-     *
-     * @return User
-     */
     User* GetObject();
 
-    /**
-     * @brief
-     *
-     * @param s
-     */
     void SetObject(QString s);
 
-    /**
-     * @brief
-     *
-     * @return User
-     */
     User* GetObject2();
 
-    /**
-     * @brief
-     *
-     * @param s
-     */
     void SetObject2(QString s);
 
-    QString uploadfilename; /**< TODO: describe */
-    QByteArray byte0; /**< TODO: describe */
-
-
+    QString uploadfilename;
+    QByteArray byte0;
 
 public slots:
-    /**
-     * @brief
-     *
-     * @param p
-     */
+
     void setClientPort(int p);
 
 private slots:
 
-    /**
-     * @brief
-     *
-     */
     void on_buttonConnect_clicked();
 
-    /**
-     * @brief
-     *
-     */
     void on_buttonQuit_clicked();
 
-    /**
-     * @brief
-     *
-     */
     void updateLogStateChange();
 
-    /**
-     * @brief
-     *
-     */
     void brokerDisconnected();
 
-    /**
-     * @brief
-     *
-     */
     void on_buttonPublish_clicked();
 
-    /**
-     * @brief
-     *
-     */
     void on_buttonSubscribe_clicked();
 
-    /**
-     * @brief
-     *
-     */
     void on_Uploadfile_clicked();
 
-    /**
-     * @brief
-     *
-     */
     void on_OpenAttachment_clicked();
 
-    /**
-     * @brief
-     *
-     * @param item
-     */
     void on_Emojiwidget_itemClicked(QListWidgetItem *item);
 
-    /**
-     * @brief
-     *
-     */
     void on_returnhome_clicked();
 
-    /**
-     * @brief
-     *
-     */
     void on_refreshattachments_clicked();
 
 private:
-    Ui::MainWindow *ui; /**< TODO: describe */
+    Ui::MainWindow *ui;
 
-    QMqttClient *m_client; /**< TODO: describe */
+    QMqttClient *m_client;
 
-    chat *chatobject; /**< TODO: describe */
+    chat *chatobject;
 
-    User *User1; /**< TODO: describe */
+    User *User1;
 
-    User *User2; /**< TODO: describe */
-
+    User *User2;
 
 };
 

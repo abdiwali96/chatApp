@@ -34,7 +34,6 @@ homepage::~homepage()
 void homepage::friendsetup(){
     ui->listoffriends->clear();
 
-
     QSqlQuery query(QSqlDatabase::database("QMYSQL"));
     QString delimiter = ",";
     QStringList fl = User1->getFriendslist().split(",");
@@ -90,15 +89,9 @@ void homepage::friendsetup(){
       }
     }
 
-
         for (int i = 0; i < friendUsernames.count(); i++) {
-
-
             QListWidgetItem *item  = new QListWidgetItem(piclist[i],friendUsernames[i]);
             ui->listoffriends->addItem(item);
-
-
-
 
     }
      this->friendUsernames = friendUsernames ;
@@ -216,13 +209,8 @@ void homepage::on_Addfriend_clicked()
             User1->setFriendslist(User1->getFriendslist() + "," + User2->getId());
             ProfileSetup();
             friendsetup();
-
-
-
         }
-        //ui->listoffriends->clear();
-        //ProfileSetup();
-        //friendsetup();
+
     }
 
 }
