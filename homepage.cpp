@@ -64,27 +64,10 @@ void homepage::friendsetup(){
         friendUsernames.append(friendusernamerow);
 
 
-        if(query.value(5).toByteArray().isEmpty()){
-            QImage image;
-            QByteArray byte1;
-
-            QFile file(":/images/emptyprofilepic.png");
-            byte1 = file.readAll();
-            if(file.open(QIODevice::ReadOnly))
-                {
-                    byte1 = file.readAll();
-                    file.close();
-                }
-            QPixmap friendavatar = QPixmap();
-            friendavatar.loadFromData(byte1);
-            piclist.append(friendavatar);
-
-        }else{
-            QByteArray PictureFromDatabase = query.value(5).toByteArray();
-            QPixmap friendavatar = QPixmap();
-            friendavatar.loadFromData(PictureFromDatabase);
-            piclist.append(friendavatar);
-        }
+        QByteArray PictureFromDatabase = query.value(5).toByteArray();
+        QPixmap friendavatar = QPixmap();
+        friendavatar.loadFromData(PictureFromDatabase);
+        piclist.append(friendavatar);
 
       }
     }
@@ -203,8 +186,7 @@ void homepage::on_Addfriend_clicked()
 
             query1.bindValue(":Numberoffriends",User1->getFriendslist() + "," +User2->getId());
             query1.exec();
-            //QListWidgetItem *item  = new QListWidgetItem(QIcon(":/images/emptyprofilepic.png"),ui->SearchBox->text());
-           // ui->listoffriends->addItem(item);
+
 
             User1->setFriendslist(User1->getFriendslist() + "," + User2->getId());
             ProfileSetup();

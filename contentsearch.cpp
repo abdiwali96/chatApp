@@ -139,7 +139,7 @@ void contentsearch::on_deletemessagebtn_clicked()
    queryH.bindValue(":NewMessage",this->Themessage);
 
    queryH.exec();
-    QMessageBox::information(this,"Success","Message has been updated");
+    QMessageBox::information(this,"Success","Message has deleted");
     ui->lineEdit->clear();
     ui->listofmessages->clear();
 

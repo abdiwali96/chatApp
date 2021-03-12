@@ -289,7 +289,7 @@ background-color: rgb(243, 243, 243);
       </rect>
      </property>
      <property name="text">
-      <string>View History</string>
+      <string>View Chat History</string>
      </property>
     </widget>
     <widget class="QPushButton" name="SendMessage">

@@ -161,10 +161,10 @@ void historyappwindow::on_Searchbutton_clicked()
 
 void historyappwindow::on_deletemessagebtn_clicked()
 {
-    QStringList WidgetMessage =  ui->listofmessages->currentItem()->text().split(",");
+   QStringList WidgetMessage =  ui->listofmessages->currentItem()->text().split(",");
 
    int chatidnum = WidgetMessage.front().toInt();
-     qDebug() <<  chatidnum;
+    // qDebug() <<  chatidnum;
     ui->listofmessages->currentItem()->text();
 
     QSqlQuery queryH(QSqlDatabase::database("QMYSQL"));
@@ -173,6 +173,7 @@ void historyappwindow::on_deletemessagebtn_clicked()
     queryH.bindValue(":chatLogID",chatidnum);
 
     queryH.exec();
+    QMessageBox::information(this, "DELETE", "MESSAGE IS DELETED!");
 
    while(queryH.next()){
 
